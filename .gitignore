@@ -9,3 +9,12 @@
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Emacs-generated list of backup files
+auto-save-list/
+
+# Automatic package management with MELPA
+elpa/
+
+# storage for last location in each file
+places
