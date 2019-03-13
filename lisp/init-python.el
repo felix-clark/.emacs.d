@@ -1,5 +1,5 @@
 (require 'init-elpa)
-(require 'init-company-mode)
+(require 'init-company)
 
 ;; (require-package 'anaconda-mode)
 ;; (require-package 'company-anaconda)

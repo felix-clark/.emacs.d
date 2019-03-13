@@ -8,4 +8,4 @@
 (add-hook 'prog-mode-hook 'company-mode)
 (define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
-(provide 'init-company-mode)
+(provide 'init-company)
