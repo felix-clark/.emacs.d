@@ -1,4 +1,16 @@
-;; stolen from purcell
+;;; init-utils.el --- Helper functions for emacs config
+;;; Commentary: stolen from parts of Purcell
+;;; Code:
+
+;; do something after another package is loaded
+(if (fboundp 'with-eval-after-load)
+    (defalias 'after-load 'with-eval-after-load)
+  (defmacro after-load (feature &rest body)
+    "After FEATURE is loaded, evaluate BODY."
+    (declare (indent defun))
+    `(eval-after-load ,feature
+       '(progn ,@body))))
+
 ;;----------------------------------------------------------------------------
 ;; Handier way to add modes to auto-mode-alist
 ;;----------------------------------------------------------------------------
@@ -8,3 +20,4 @@
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
 (provide 'init-utils)
+;;; end of init-utils.el
