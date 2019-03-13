@@ -1,4 +1,6 @@
-;; this file belongs in ~/.emacs or, preferably, ~/.emacs.d/init.el .
+;;; init.el --- loads other elisp scripts
+;;; Commentary:
+;;; Code:
 
 ;; look in the "lisp" directory for additional custom macros
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -18,8 +20,11 @@
 ;; config for editing text
 (require 'init-editing)
 
+;; flycheck is used with other packages
+(require 'init-flycheck)
+
 ;; company mode for tab-completion
-(require 'init-company-mode)
+(require 'init-company)
 
 ;; load specific language configurations
 (require 'init-python)
@@ -29,3 +34,4 @@
 (require 'init-csv)
 
 (provide 'init)
+;;; init.el ends here
