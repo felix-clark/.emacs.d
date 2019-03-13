@@ -13,6 +13,8 @@
 
 ;; byte-compile everything that hasn't already been for speed
 ;; in emacs 25 this can likely be replaced by auto-compile
+;; this can also cause "Invalid function; after-load"
+;; so remove all .elc when messing with that
 (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;; custom lisp functions
