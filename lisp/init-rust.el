@@ -21,9 +21,13 @@
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
 
 ;; use racer with company-mode for tab auto-completion
-;; (add-hook 'rust-mode-hook #'company-mode) ;; should already be a part of prog-mode
 (add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
+;; (add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode) ;; should already be a part of prog-mode
+
+;; there are other options, like
+;; company-complete-common-or-cycle
+(define-key racer-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
 ;; flycheck-rust is not on MELPA stable
 (when (maybe-require-package 'flycheck-rust)

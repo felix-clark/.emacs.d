@@ -10,8 +10,9 @@
 (add-to-list 'completion-styles 'initials t)
 
 (setq company-tooltip-align-annotations t)
-(add-hook 'prog-mode-hook 'company-mode)
-(define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+
+;; (add-hook 'prog-mode-hook 'company-mode)
+;; (define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
 (provide 'init-company)
 ;;; init-company.el ends here
