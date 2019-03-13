@@ -4,7 +4,9 @@
 (require 'init-elpa)
 
 (require-package 'company)
-(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+(when (maybe-require-package 'company-quickhelp)
+  (add-hook 'after-init-hook 'company-quickhelp-mode))
 
 (setq tab-always-indent 'complete)
 (add-to-list 'completion-styles 'initials t)
@@ -13,6 +15,8 @@
 
 ;; (add-hook 'prog-mode-hook 'company-mode)
 ;; (define-key prog-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+
+
 
 (provide 'init-company)
 ;;; init-company.el ends here
