@@ -11,3 +11,11 @@ http://aaronbedra.com/emacs.d/
 https://github.com/racer-rust/emacs-racer
 http://julienblanchard.com/2016/fancy-rust-development-with-emacs/
 https://manenko.com/2016/08/03/setup-emacs-for-rust-development.html
+
+## Later emacs versions
+
+```
+sudo add-apt-repository ppa:kelleyk/emacs
+sudo apt-get update
+sudo apt install emacs26
+```
