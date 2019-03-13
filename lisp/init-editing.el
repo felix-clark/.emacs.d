@@ -4,6 +4,9 @@
 (setq show-paren-delay 0)
 (show-paren-mode 1)
 
+;; always show column number (line-number-mode is on by default)
+(setq column-number-mode t)
+
 ;; set flyspell for spellcheck on by default
 (require 'flyspell)
 (add-hook 'text-mode-hook 'flyspell-mode)
