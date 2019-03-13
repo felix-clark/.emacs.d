@@ -1,16 +1,18 @@
+;;; init-rust.el --- Rust utilities
+;;; Commentary:
+;;; Code:
+
 (require 'init-elpa)
 (require 'init-company)
 
 (require-package 'racer)
 (require-package 'rust-mode)
 (require-package 'flycheck)
-;; (require-package 'flycheck-rust)
 
 (require 'racer)
 (require 'rust-mode)
 (require 'eldoc)
 (require 'flycheck)
-;; (require 'flycheck-rust)
 
 ;; this is probably not necessary, since emacs seems to understand that .rs are rust files
 ;; (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
@@ -22,7 +24,11 @@
 ;; (add-hook 'rust-mode-hook #'company-mode) ;; should already be a part of prog-mode
 (add-hook 'rust-mode-hook #'racer-mode)
 (add-hook 'racer-mode-hook #'eldoc-mode)
-;; (add-hook 'flycheck-mode-hook #'flycheck-rust-setup) ;; might need to install through Cask
+
+;; flycheck-rust is not on MELPA stable
+(when (maybe-require-package 'flycheck-rust)
+  (after-load 'rust-mode
+    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
 ;; wrap the rest in a lambda for speed?
 (add-hook 'rust-mode-hook
@@ -42,3 +48,4 @@
 	     ))
 
 (provide 'init-rust)
+;;; init-rust.el ends here
