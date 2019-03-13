@@ -14,9 +14,9 @@
 ;; Automatic byte compilation
 ;; ----------------------------------------------------------------------------
 ;; requires emacs 25
-;; (when (maybe-require-package 'auto-compile)
-;;   (add-hook 'after-init-hook 'auto-compile-on-save-mode)
-;;   (add-hook 'after-init-hook 'auto-compile-on-load-mode))
+(when (maybe-require-package 'auto-compile)
+  (add-hook 'after-init-hook 'auto-compile-on-save-mode)
+  (add-hook 'after-init-hook 'auto-compile-on-load-mode))
 
 
 ;; (when (maybe-require-package 'flycheck)
