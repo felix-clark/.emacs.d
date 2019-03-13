@@ -47,5 +47,13 @@
 (require 'init-csv)
 (require 'init-tex)
 
+;; start server to enable emacsclient
+;; it's not clear this is working
+(add-hook 'after-init-hook
+          (lambda ()
+            (require 'server)
+            (unless (server-running-p)
+	      (server-start))))
+
 (provide 'init)
 ;;; init.el ends here
