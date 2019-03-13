@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;; debuging
-;(setq debug-on-error t)
+(setq debug-on-error t)
 
 ;; look in the "lisp" directory for additional custom macros
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
@@ -12,7 +12,6 @@
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 
 ;; byte-compile everything that hasn't already been for speed
-;; in emacs 25 this can likely be replaced by auto-compile
 ;; this can also cause "Invalid function; after-load"
 ;; so remove all .elc when messing with that
 (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)

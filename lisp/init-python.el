@@ -1,32 +1,34 @@
+;;; init-python --- Python utility
+;;; Commentary:
+;;; anaconda-mode and company-anaconda doesn't seem to be as good with auto-completions as basic company mode.
+;;; this should be played with more (don't forget to remove .elc)
+;;; Code:
+
 (require 'init-elpa)
 (require 'init-company)
 
-;; (require-package 'anaconda-mode)
-;; (require-package 'company-anaconda)
+(require-package 'pip-requirements)
 
-;; seems to be a one-or-the-other with the company backend
-;; (add-hook 'python-mode-hook 'anaconda-mode)
+;; configure python company -- should this be done separately from company-anaconda?
+;; (add-hook 'python-mode-hook 'company-mode)
+;; (define-key company-mode-map (kbd "TAB") #'company-complete-common-or-cycle)
+;;(define-key company-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
-;; (eval-when-compile (defvar company-backends)) ;; warning about company-backends
-;; not sure this does much...
-;; (eval-after-load "company"
-;;   '(add-to-list 'company-backends 'company-anaconda))
-;; this version includes completions from an inferior python process
-;; (eval-after-load "company"
-;;    '(add-to-list 'company-backends '(company-anaconda :with company-capf)))
+;; anaconda-mode requires emacs 25
+(when (maybe-require-package 'anaconda-mode)
+  (after-load 'python
+    (add-hook 'python-mode-hook 'anaconda-mode)
+    (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+  (when (maybe-require-package 'company-anaconda)
+    (after-load 'company
+      (after-load 'python
+	(push 'company-anaconda company-backends)))))
 
-;; roll with elpy for now
-(require-package 'elpy)
-(add-hook 'python-mode-hook 'elpy-enable)
-
+;; seems like flycheck already activated
 ;; (require-package 'flycheck)
 ;; (when (require 'flycheck nil t)
 ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
 ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-;; (require-package 'py-autopep8)
-;; (require 'py-autopep8)
-;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
-
 (provide 'init-python)
+;;; init-python.el ends here
