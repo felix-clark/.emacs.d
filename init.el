@@ -19,6 +19,7 @@
 (require 'init-company-mode)
 
 ;; load specific language configurations
+(require 'init-python)
 (require 'init-rust)
 
 (provide 'init)

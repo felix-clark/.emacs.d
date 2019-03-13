@@ -1,12 +1,11 @@
 (require 'init-elpa)
-(require-package 'company)
+(require 'init-company-mode)
+
 (require-package 'racer)
 (require-package 'rust-mode)
 (require-package 'flycheck)
 ;; (require-package 'flycheck-rust)
 
-;; again, are these redundant?
-(require 'company)
 (require 'racer)
 (require 'rust-mode)
 (require 'eldoc)
