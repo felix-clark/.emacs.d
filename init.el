@@ -6,6 +6,9 @@
 ;; byte-compile everything that hasn't already been for speed
 (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
+;; custom lisp functions
+(require 'init-utils)
+
 ;; load the code to deal with packages
 (require 'init-elpa)
 
@@ -21,5 +24,8 @@
 ;; load specific language configurations
 (require 'init-python)
 (require 'init-rust)
+
+;; load other file type configurations
+(require 'init-csv)
 
 (provide 'init)
