@@ -29,6 +29,9 @@
 ;; config for editing text
 (require 'init-editing)
 
+;; navigation
+(require 'init-navigation)
+
 ;; flycheck is used with other packages
 (require 'init-flycheck)
 
