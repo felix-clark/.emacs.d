@@ -45,6 +45,7 @@
 
 ;; load other file type configurations
 (require 'init-csv)
+(require 'init-tex)
 
 (provide 'init)
 ;;; init.el ends here
