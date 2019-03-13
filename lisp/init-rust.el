@@ -34,10 +34,14 @@
   (after-load 'rust-mode
     (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
 
-;; TODO: set up "C-M-\" on a selection to do the same thing
+;; setup rust-format-buffer
 ;; could also use rust-format-on-save
+;; (add-hook 'rust-mode-hook
+;; 	  '(lambda ()
+;; 	     (local-set-key  (kbd "C-c TAB") #'rust-format-buffer)))
+
 (after-load 'rust-mode
-  (local-set-key  (kbd "C-c TAB") #'rust-format-buffer)
+  (setq rust-format-on-save t)
   ;; use rustup binaries PATH; doesn't appear necessary
   ;; (setq racer-cmd "~/.cargo/bin/racer")
   ;; point the the rust source installed with `rustup component add rust-src`
