@@ -12,10 +12,17 @@ https://github.com/racer-rust/emacs-racer
 http://julienblanchard.com/2016/fancy-rust-development-with-emacs/
 https://manenko.com/2016/08/03/setup-emacs-for-rust-development.html
 
-## Later emacs versions
+## Acquiring later emacs versions on ubuntu
+
+The kelleyk repo will enable emacs 25 and 26.
 
 ```
 sudo add-apt-repository ppa:kelleyk/emacs
 sudo apt-get update
 sudo apt install emacs26
 ```
+
+## Troubleshooting
+
+A good number of problems can be solved by deleting all *.elc files to refresh the bit compilation.
+Some files depend on others but their bit files are not necessarily updated when their dependencies' are.
