@@ -1,5 +1,6 @@
 ;;; init-utils.el --- Helper functions for emacs config
-;;; Commentary: stolen from parts of Purcell
+;;; Commentary:
+;;; stolen from parts of Purcell
 ;;; Code:
 
 ;; do something after another package is loaded
@@ -20,4 +21,4 @@
     (add-to-list 'auto-mode-alist (cons pattern mode))))
 
 (provide 'init-utils)
-;;; end of init-utils.el
+;;; init-utils.el ends here

@@ -5,8 +5,6 @@
 
 (require 'init-elpa)
 
-;; loading a custom theme would go here, but I use terminal themes now anyway
-
 ;; make the window with the cursor larger
 (require-package 'golden-ratio)
 (require 'golden-ratio)
@@ -19,9 +17,10 @@
 (menu-bar-mode -1)
 
 ;; Setting themes
-;; once themes are loaded they can simply be enabled (enable-theme my-theme).
-;; I'll probably stick to one theme, though, so there's not much point
-;; in actually loading multiple.
+;; when multiple themes are loaded then one can simply
+;; be enabled: (enable-theme 'my-theme)
+;; I'll probably stick to one theme, though, so there's
+;; not much point in actually loading multiple.
 
 ;; solarized comes with nice-looking light and dark themes
 (require-package 'solarized-theme)

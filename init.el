@@ -49,6 +49,7 @@
 
 ;; start server to enable emacsclient
 ;; it's not clear this is working
+;; see https://www.emacswiki.org/emacs/EmacsClient
 (add-hook 'after-init-hook
           (lambda ()
             (require 'server)

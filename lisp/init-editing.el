@@ -1,3 +1,6 @@
+;;; init-editing.el --- text editing
+;;; Commentary:
+;;; Code:
 (require 'init-elpa)
 
 ;; always highlight complementary delimiters with zero delay
@@ -30,3 +33,4 @@
 (add-hook 'prog-mode-hook (electric-pair-mode 1))
 
 (provide 'init-editing)
+;;; init-editing.el ends here
