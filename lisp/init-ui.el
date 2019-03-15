@@ -14,7 +14,18 @@
 (setq inhibit-startup-message t)
 
 ;; disable the menu bar that we don't use in no-window mode anyway
+;; this is the emacs built-in menu
 (menu-bar-mode -1)
+
+;; turn off the OS menu
+(tool-bar-mode -1)
+
+;; turn off the scrollbar
+(scroll-bar-mode -1)
+
+;; start in fullscreen mode
+;; this doesn't remove menu bar in ubuntu, so might as well just press F11 after
+;; (toggle-full-screen)
 
 ;; Setting themes
 ;; when multiple themes are loaded then one can simply
