@@ -16,6 +16,6 @@ https://manenko.com/2016/08/03/setup-emacs-for-rust-development.html
 
 ```
 sudo add-apt-repository ppa:kelleyk/emacs
-sudo apt-get update
+sudo apt update
 sudo apt install emacs26
 ```
