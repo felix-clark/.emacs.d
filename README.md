@@ -18,7 +18,7 @@ The kelleyk repo will enable emacs 25 and 26.
 
 ```
 sudo add-apt-repository ppa:kelleyk/emacs
-sudo apt-get update
+sudo apt update
 sudo apt install emacs26
 ```
 
