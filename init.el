@@ -48,7 +48,8 @@
 (require 'init-tex)
 
 ;; start server to enable emacsclient
-;; it's not clear this is working
+;; it's not clear this is working, but there's not much point
+;; in it until the configuration is stable.
 ;; see https://www.emacswiki.org/emacs/EmacsClient
 (add-hook 'after-init-hook
           (lambda ()
