@@ -15,14 +15,23 @@
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
+;; rebind comment line from "C-x C-;" to "C-;",
+;; overriding flyspell-auto-correct-previous-word
+;; this doesn't actually seem to override it, however.
+;; (defun toggle-comment-on-line ()
+;;   "Comment or uncomment current line."
+;;   (interactive)
+;;   (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+;; (global-set-key (kbd "C-;") 'toggle-comment-on-line)
+
 ;; return to last place you were in when the file was opened
 ;; saved in ~/.emacs.d/places/, or ~/.emacs-places in older versions.
 ;; in emacs 25 I won't need to (require 'saveplace)
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (concat user-emacs-directory "places"))
+;; (require 'saveplace)
+;; (setq-default save-place t)
+;; (setq save-place-file (concat user-emacs-directory "places"))
 ;; if slow to exit, try adding (setq save-place-forget-unreadable-files nil)
-;; (save-place-mode 1) ;; change all this to this single line with emacs 25
+(save-place-mode 1) ;; change all this to this single line with emacs 25
 
 ;; different coloring of successive delimiter levels
 (require-package 'rainbow-delimiters)
