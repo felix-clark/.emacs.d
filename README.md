@@ -26,3 +26,5 @@ sudo apt install emacs26
 
 A good number of problems can be solved by deleting all *.elc files to refresh the bit compilation.
 Some files depend on others but their bit files are not necessarily updated when their dependencies' are.
+
+Though it is supposed to be called every time a package needs to be installed, this functionality may not be working as intended so it may help to also manually call `M-x package-refresh-contents`.
