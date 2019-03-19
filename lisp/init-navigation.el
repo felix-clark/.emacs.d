@@ -51,6 +51,10 @@
 ;; it has a sensible default for save items
 (require-package 'amx)
 (amx-mode)
+;; set one or both of these to nil to reduce a bit of delay
+;; (setq 'amx-ignored-command-matchers nil)
+;; (setq 'amx-show-key-bindings nil)
+
 
 (provide 'init-navigation)
 ;;; init-navigation.el ends here
