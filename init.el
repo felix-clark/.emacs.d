@@ -37,6 +37,9 @@
 ;; company mode for tab-completion
 (require 'init-company)
 
+;; magit
+(require 'init-git)
+
 ;; load specific language configurations
 (require 'init-lisp)
 (require 'init-python)
