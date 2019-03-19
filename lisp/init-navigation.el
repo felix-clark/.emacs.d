@@ -39,8 +39,11 @@
   ;; (setq-default projectile-mode-line-prefix " Proj")
   ;; (after-load 'projectile
   ;;   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  
   ;; use projectile mode in standard commands instead of setting separate bindings
+  ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
   (add-hook 'after-init-hook 'projectile-global-mode)
+  
   (maybe-require-package 'ibuffer-projectile))
 
 ;; amx is an active fork of smex for improved M-x utility
