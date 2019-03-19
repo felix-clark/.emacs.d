@@ -10,6 +10,7 @@
   (after-load 'projectile
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
   (maybe-require-package 'ibuffer-projectile))
+;; TODO: consider replacing default default bindings like "C-x C-f" with projectile versions
 
 ;; smex to improve M-x
 (when (maybe-require-package 'smex)
