@@ -24,9 +24,12 @@
 (scroll-bar-mode -1)
 
 ;; start in fullscreen mode
-;; use frame-fullscreen to remove Ubuntu menu bar
+;; use frame-fullscreen to remove Ubuntu menu bar as well
 ;; (toggle-full-screen)
-(toggle-frame-fullscreen)
+;; (toggle-frame-fullscreen)
+
+(require-package 'which-key)
+(which-key-mode)
 
 ;; Setting themes
 ;; when multiple themes are loaded then one can simply
