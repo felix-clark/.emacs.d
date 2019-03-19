@@ -16,12 +16,12 @@ auto-save-list/
 # Automatic package management with MELPA
 elpa/
 
-# storage for last location in each file
-places
-
 # added by other packages
+places
+ido.last
 .recentf
 projectile-bookmarks.eld
 .smex-items
 amx-items
 anaconda-mode/
+transient/
