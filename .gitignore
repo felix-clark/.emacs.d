@@ -20,6 +20,8 @@ elpa/
 places
 
 # added by other packages
+.recentf
 projectile-bookmarks.eld
 .smex-items
+amx-items
 anaconda-mode/
