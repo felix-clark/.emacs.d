@@ -43,6 +43,7 @@
 ;; load specific language configurations
 (require 'init-lisp)
 (require 'init-python)
+(require 'init-cc)
 (require 'init-rust)
 (require 'init-haskell)
 
