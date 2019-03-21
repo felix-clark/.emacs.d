@@ -5,11 +5,6 @@
 
 (require 'init-elpa)
 
-;; make the window with the cursor larger
-(require-package 'golden-ratio)
-(require 'golden-ratio)
-(golden-ratio-mode 1)
-
 ;; open scratch buffer instead of welcome message
 (setq inhibit-startup-message t)
 
@@ -28,8 +23,15 @@
 ;; (toggle-full-screen)
 ;; (toggle-frame-fullscreen)
 
-(require-package 'which-key)
-(which-key-mode)
+;; make the window with the cursor larger
+(use-package golden-ratio
+  :init (golden-ratio-mode)
+  )
+
+(use-package which-key
+  :init (which-key-mode)
+  )
+
 
 ;; Setting themes
 ;; when multiple themes are loaded then one can simply
@@ -44,8 +46,10 @@
 ;; (load-theme 'solarized-light-theme)
 
 ;; zenburn is a popular vi theme
-(require-package 'zenburn-theme)
-(load-theme 'zenburn t) ;; not sure what passing "true" here does
+(use-package zenburn-theme
+  :init (load-theme 'zenburn t) ;; not sure what passing "true" here does
+  )
+
 
 (provide 'init-ui)
 ;;; init-ui.el ends here

@@ -37,7 +37,7 @@
 ;; company mode for tab-completion
 (require 'init-company)
 
-;; magit -- possibly interferes with counsel-git?
+;; magit
 (require 'init-git)
 
 ;; load specific language configurations

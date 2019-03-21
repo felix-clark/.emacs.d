@@ -33,8 +33,11 @@
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
 
+(use-package company-c-headers)
 
-;;;; garbage?
+
+
+;; garbage?
 
 ;; having some difficulty with company-clang. try irony instead?
 ;; (require 'init-company)
