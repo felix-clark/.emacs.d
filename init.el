@@ -14,7 +14,7 @@
 ;; byte-compile everything that hasn't already been for speed
 ;; this can also cause "Invalid function; after-load"
 ;; so remove all .elc when messing with that
-(byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
+;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;; custom lisp functions
 (require 'init-utils)
@@ -37,7 +37,7 @@
 ;; company mode for tab-completion
 (require 'init-company)
 
-;; magit
+;; magit -- possibly interferes with counsel-git?
 (require 'init-git)
 
 ;; load specific language configurations

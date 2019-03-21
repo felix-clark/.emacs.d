@@ -29,7 +29,12 @@
 	     '("melpa" . "https://melpa.org/packages/") t)
 	     ;; '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
+
 (package-initialize)
+
+;; TODO: we should replace remaining uses of above functions with use-pacakge
+;; macro for simple configuration
+(require-package 'use-package)
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
