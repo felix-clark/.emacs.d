@@ -77,11 +77,13 @@
   :config
   ;; use ivy with projectile
   (setq projectile-completion-system 'ivy)
+  :after (ivy)
   )
 
 (use-package counsel-projectile
   :init
   (counsel-projectile-mode)
+  :after (counsel projectile)
   )
 
 (use-package ibuffer-projectile)
@@ -97,6 +99,7 @@
   ;; set one or both of these to nil to reduce a bit of delay
   ;; (setq 'amx-ignored-command-matchers nil)
   ;; (setq 'amx-show-key-bindings nil)
+  :after (ivy) ; load after ivy so it is recognized
   )
 
 (provide 'init-navigation)

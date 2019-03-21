@@ -25,13 +25,22 @@
 (require-package 'irony-eldoc)
 (add-hook 'irony-mode-hook #'irony-eldoc)
 ;; activate flycheck-irony to use clang instead of flycheck's default gcc
+(use-package flycheck-irony
+  :after (flycheck irony)
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  )
 ;; (require-package 'flycheck-irony)
 ;; (eval-after-load 'flycheck
 ;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 ;; use company-irony
-(require-package 'company-irony)
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+(use-package company-irony
+  :after (company irony)
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony))
+  )
 
 (use-package company-c-headers)
 

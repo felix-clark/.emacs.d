@@ -25,6 +25,7 @@
   )
 
 ;; add a new extension to activate haskell-mode
+;; the default is ghci-script-mode; not sure what advantage of this is
 (add-auto-mode 'haskell-mode "\\.ghci\\'")
 
 ;; indentation

@@ -26,9 +26,14 @@
 ;; see emacs wiki on "CommentingCode" for alternative that comments full lines containing region a la eclipse
 
 ;; set flyspell for spellcheck on by default
-(require 'flyspell)
-(add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;; (require 'flyspell)
+;; (add-hook 'text-mode-hook 'flyspell-mode)
+;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+(use-package flyspell
+  :hook
+  ((text-mode . flyspell-mode)
+   (prog-mode . flyspell-prog-mode))
+  )
 
 ;; rebind comment line from "C-x C-;" to "C-;",
 ;; overriding flyspell-auto-correct-previous-word

@@ -4,16 +4,11 @@
 
 (require 'init-elpa)
 (use-package csv-mode
+  ;; :mode ("\\.[Cc][Ss][Vv]\\'" . csv-mode) ; redundant?
   :config
-  (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
+  ;; (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
   (setq csv-separators '("," ";" "|" " "))
-  
   )
-;; (require-package 'csv-mode)
-
-;; (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")
-
-;; (setq csv-separators '("," ";" "|" " "))
 
 (provide 'init-csv)
 ;;; init-csv.el ends here
