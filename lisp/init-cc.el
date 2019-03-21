@@ -1,17 +1,25 @@
 ;;; init-c.el --- for C/C++/C#.
 ;;; Commentary:
+;;; TODO: At the moment, tab completion doesn't actually seem to work.
+;;; we need more configuration with irony/clang.
 ;;; Code:
 (require 'cc-mode)
 (require 'init-company)
 
 ;; use irony for c-type
-(require-package 'irony)
+;; (require-package 'irony)
 ;; will need to run irony-install-server manually to set up server
-;; , but we are having trouble compiling right now
+;; see https://github.com/Sarcasm/irony-mode/issues/167
+;; on ubuntu install libclang-3.8-dev (for instance)
+
 ;; activate for common c-like languages
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
+;; (add-hook 'c++-mode-hook 'irony-mode)
+;; (add-hook 'c-mode-hook 'irony-mode)
+;; (add-hook 'objc-mode-hook 'irony-mode)
+(use-package irony
+  ;; :hook (c++-mode c-mode objc-mode)
+  :hook ((c++-mode c-mode objc-mode) . irony-mode)
+  )
 ;; use counsel-irony
 (defun use-counsel-irony ()
   (define-key irony-mode-map
@@ -42,7 +50,12 @@
     '(add-to-list 'company-backends 'company-irony))
   )
 
-(use-package company-c-headers)
+;; may take some more configuration to find the right directory, see github
+(use-package company-c-headers
+  :after (company)
+  :config
+  (add-to-list 'company-backends 'company-c-headers)
+  )
 
 
 
