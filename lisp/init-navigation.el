@@ -34,6 +34,7 @@
 ;; try ivy over ido
 (require-package 'ivy)
 (use-package ivy
+  :ensure t
   :init (ivy-mode)
   :config
   (setq ivy-use-virtual-buffers t) ; possibly needed for recentf
@@ -49,6 +50,7 @@
   )
 
 (use-package counsel
+  :ensure t
   :init
   ;; overrides many common key bindings (like find-file)
   (counsel-mode)

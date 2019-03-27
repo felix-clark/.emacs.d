@@ -39,6 +39,7 @@
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
   )
+;; need to download if not present, tho the warnings from use-package will make it easy to do manually
 ;; (require-package 'flycheck-irony)
 ;; (eval-after-load 'flycheck
 ;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
