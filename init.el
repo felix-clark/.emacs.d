@@ -40,6 +40,9 @@
 ;; magit
 (require 'init-git)
 
+;; org mode
+(require 'init-org)
+
 ;; load specific language configurations
 (require 'init-lisp)
 (require 'init-python)
