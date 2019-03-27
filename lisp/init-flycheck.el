@@ -1,5 +1,6 @@
 (require 'init-elpa)
 
+(require-package 'flycheck)
 (use-package flycheck
   :ensure t
   :init
@@ -7,7 +8,6 @@
   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
   )
 
-;; this doesn't work for some reason?
 (use-package flycheck-color-mode-line
   :commands
   flycheck-color-mode-line-mode
@@ -17,12 +17,5 @@
   ;; :hook (flycheck-mode . flycheck-color-mode-line)
   ;; :hook flycheck-mode
   )
-
-;; (when (maybe-require-package 'flycheck)
-;;   (add-hook 'after-init-hook 'global-flycheck-mode)
-;;   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
   
-;; (when (maybe-require-package 'flycheck-color-mode-line)
-;;   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
-
 (provide 'init-flycheck)

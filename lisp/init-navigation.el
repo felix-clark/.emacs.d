@@ -32,6 +32,7 @@
 ;; (ido-ubiquitous-mode 1)
 
 ;; try ivy over ido
+(require-package 'ivy)
 (use-package ivy
   :init (ivy-mode)
   :config
@@ -51,16 +52,17 @@
   :init
   ;; overrides many common key bindings (like find-file)
   (counsel-mode)
-  :bind (
-	 ("<f2> u" . counsel-unicode-char)
-	 ;; find file in git repo:
-	 ("C-c g" . counsel-git)
-	 ;; grep within repo:
-	 ("C-c j" . counsel-git-grep)
-	 ("C-c k" . counsel-ag) ; we don't have ag installed now?
-	 ("C-x l" . counsel-locate)
-	 ("C-S-o" . counsel-rhythmbox)
-	 )
+  :bind
+  (
+   ("<f2> u" . counsel-unicode-char)
+   ;; find file in git repo:
+   ("C-c g" . counsel-git)
+   ;; grep within repo:
+   ("C-c j" . counsel-git-grep)
+   ("C-c k" . counsel-ag) ; we don't have ag installed now?
+   ("C-x l" . counsel-locate)
+   ("C-S-o" . counsel-rhythmbox)
+   )
   :config
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   )
