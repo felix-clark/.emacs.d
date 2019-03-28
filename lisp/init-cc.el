@@ -2,10 +2,15 @@
 ;;; Commentary:
 ;;; TODO: At the moment, tab completion doesn't actually seem to work.
 ;;; we need more configuration with irony/clang.
-;;; also using clang-format only while in C-like mode
+;;; look into rtags as well. conflict with irony?
 ;;; Code:
-(require 'cc-mode)
 (require 'init-company)
+
+(use-package cc-mode
+  :defer t ;; should autoload only in the right modes
+  :init
+  (require-package 'cc-mode)
+)
 
 ;; use irony for c-type
 ;; (require-package 'irony)
@@ -13,41 +18,48 @@
 ;; see https://github.com/Sarcasm/irony-mode/issues/167
 ;; on ubuntu install libclang-3.8-dev (for instance)
 
-;; activate for common c-like languages
-;; (add-hook 'c++-mode-hook 'irony-mode)
-;; (add-hook 'c-mode-hook 'irony-mode)
-;; (add-hook 'objc-mode-hook 'irony-mode)
-;; cc-mode should include all of these
 (use-package irony
+  ;; activate for common c-like languages
   ;; :hook (c++-mode c-mode objc-mode)
-  :hook ((c++-mode c-mode objc-mode) . irony-mode)
+  ;; :hook ((c++-mode c-mode objc-mode) . irony-mode)
+  :hook (cc-mode . irony-mode)
+  :config
+  ;; use suggested configuration
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   )
 ;; use counsel-irony
+;; possibly can put this into use-pacakge :config area
 (defun use-counsel-irony ()
   (define-key irony-mode-map
       [remap completion-at-point] 'counsel-irony)
   (define-key irony-mode-map
       [remap complete-symbol] 'counsel-irony))
 (add-hook 'irony-mode-hook 'use-counsel-irony)
-;; use suggested configuration
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
 ;; activate irony-eldoc
-(require-package 'irony-eldoc)
-(add-hook 'irony-mode-hook #'irony-eldoc)
+(use-package irony-eldoc
+  :after (eldoc irony)
+  :init
+  (require-package 'irony-eldoc)
+  :config
+  (add-hook 'irony-mode-hook #'irony-eldoc)
+  )
+
 ;; activate flycheck-irony to use clang instead of flycheck's default gcc
 (use-package flycheck-irony
   :after (flycheck irony)
+  :init
+  (require-package 'flycheck-irony)
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
   )
-;; need to download if not present, tho the warnings from use-package will make it easy to do manually
-;; (require-package 'flycheck-irony)
-;; (eval-after-load 'flycheck
-;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
 ;; use company-irony
 (use-package company-irony
   :after (company irony)
+  :init
+  (require-package 'company-irony)
   :config
   (eval-after-load 'company
     '(add-to-list 'company-backends 'company-irony))
@@ -60,21 +72,28 @@
   (add-to-list 'company-backends 'company-c-headers)
   )
 
-;; TODO: clean up these calls and make them activated for all cc-mode
-;; Create clang-format file using google style:
-;; clang-format -style=google -dump-config > .clang-format
-;; will cause errors if clang-format is not installed
-(require-package 'clang-format)
-;; get default indentation behavior from clang
-;; doesn't seem to work, though.
-;; (add-hook 'c++-mode-hook
-	  ;; (lambda () (global-set-key (kbd "C-i") 'clang-format)))
-;; clang-format-region can be triggered using C-M-\
-(add-hook 'c++-mode-hook
-	  (lambda () (global-set-key (kbd "C-M-\\") 'clang-format-region)))
-;; automatically format file on save
-;; however, this appears to edit the buffer *after* the save, which is very annoying
-;; (add-hook 'c++-mode-hook (lambda () (add-to-list 'write-file-functions 'clang-format-buffer)))
+;; TODO: make auto-indentation use clang-format?
+;; will cause errors if clang-format is not installed in OS
+(use-package clang-format
+  :after cc-mode
+  :init
+  (require-package 'clang-format)
+  ;; clang-format-region can be triggered using "C-M-\"
+  :bind
+  ("C-M-\\" . clang-format-region)
+  ;; ("C-i" . clang-format) ;; doesn't work
+  :config
+  ;; (fset 'c-indent-region 'clang-format-region) ;; doesn't seem to work either
+  ;; auto-format upon save
+  (add-hook 'before-save-hook 'clang-format-buffer)
+  
+  ;; to create clang-format file using google style:
+  ;; clang-format -style=google -dump-config > .clang-format
+  ;; TODO: should look in git root directory first
+  (if (not (file-exists-p ".clang-format"))
+      (setq clang-format-style-option "google"))
+  )
+
 
 ;; garbage?
 
