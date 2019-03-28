@@ -6,6 +6,7 @@
 ;; recentf to use <up> to browse recent files
 (use-package recentf
   :init
+  (require-package 'recentf)
   (recentf-mode)
   :config
   (setq recentf-save-file (concat user-emacs-directory ".recentf"))
@@ -32,10 +33,11 @@
 ;; (ido-ubiquitous-mode 1)
 
 ;; try ivy over ido
-(require-package 'ivy)
 (use-package ivy
   :ensure t
-  :init (ivy-mode)
+  :init
+  (require-package 'ivy)
+  (ivy-mode)
   :config
   (setq ivy-use-virtual-buffers t) ; possibly needed for recentf
   (setq ivy-height 20) ;; optional
@@ -52,6 +54,7 @@
 (use-package counsel
   :ensure t
   :init
+  (require-package 'counsel)
   ;; overrides many common key bindings (like find-file)
   (counsel-mode)
   :bind
@@ -78,6 +81,7 @@
 
 (use-package projectile
   :init
+  (require-package 'projectile)
   ;; use projectile mode in standard commands instead of setting separate bindings
   ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
   (projectile-mode)
@@ -89,6 +93,7 @@
 
 (use-package counsel-projectile
   :init
+  (require-package 'counsel-projectile)
   (counsel-projectile-mode)
   :after (counsel projectile)
   )
@@ -100,8 +105,10 @@
 ;; it automatically detects if ido or ivy is setup and if so it uses that back-end
 ;; it has a sensible default for save items
 ;; it's unclear how much it conflicts or works within counsel-M-x
+;; amx should enable recent history
 (use-package amx
   :init
+  (require-package 'amx)
   (amx-mode)
   ;; :config
   ;; set one or both of these to nil to reduce a bit of delay
