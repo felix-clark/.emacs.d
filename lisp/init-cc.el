@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; TODO: At the moment, tab completion doesn't actually seem to work.
 ;;; we need more configuration with irony/clang.
+;;; also using clang-format only while in C-like mode
 ;;; Code:
 (require 'cc-mode)
 (require 'init-company)
@@ -16,6 +17,7 @@
 ;; (add-hook 'c++-mode-hook 'irony-mode)
 ;; (add-hook 'c-mode-hook 'irony-mode)
 ;; (add-hook 'objc-mode-hook 'irony-mode)
+;; cc-mode should include all of these
 (use-package irony
   ;; :hook (c++-mode c-mode objc-mode)
   :hook ((c++-mode c-mode objc-mode) . irony-mode)
@@ -58,7 +60,21 @@
   (add-to-list 'company-backends 'company-c-headers)
   )
 
-
+;; TODO: clean up these calls and make them activated for all cc-mode
+;; Create clang-format file using google style:
+;; clang-format -style=google -dump-config > .clang-format
+;; will cause errors if clang-format is not installed
+(require-package 'clang-format)
+;; get default indentation behavior from clang
+;; doesn't seem to work, though.
+;; (add-hook 'c++-mode-hook
+	  ;; (lambda () (global-set-key (kbd "C-i") 'clang-format)))
+;; clang-format-region can be triggered using C-M-\
+(add-hook 'c++-mode-hook
+	  (lambda () (global-set-key (kbd "C-M-\\") 'clang-format-region)))
+;; automatically format file on save
+;; however, this appears to edit the buffer *after* the save, which is very annoying
+;; (add-hook 'c++-mode-hook (lambda () (add-to-list 'write-file-functions 'clang-format-buffer)))
 
 ;; garbage?
 
