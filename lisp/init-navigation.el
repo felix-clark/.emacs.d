@@ -33,6 +33,8 @@
 ;; (ido-ubiquitous-mode 1)
 
 ;; try ivy over ido
+;; note: ivy uses S-SPC instead of C-SPC to restrict within matches
+;; fuzzy matching can be activated with ivy--regex-fuzzy, but let's keep that off for now.
 (use-package ivy
   :ensure t
   :init
