@@ -67,6 +67,9 @@
    )
   :config
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+  ;; remove initial "^" in minibuffer
+  (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
+  ;; (setq ivy-initial-inputs-alist nil) ;; this removes "^" in all ivy commands
   )
 
 
@@ -94,8 +97,9 @@
   
 
 ;; amx is an active fork of smex for improved M-x utility
-;; it automatically detects if ido or ivy is setup and if so it uses that backend
+;; it automatically detects if ido or ivy is setup and if so it uses that back-end
 ;; it has a sensible default for save items
+;; it's unclear how much it conflicts or works within counsel-M-x
 (use-package amx
   :init
   (amx-mode)
