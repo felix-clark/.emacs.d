@@ -22,7 +22,7 @@
   (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
       (comment-or-uncomment-region (line-beginning-position) (line-end-position))
     (comment-dwim arg)))
-(global-set-key "\M-;" 'comment-dwim-line)
+(global-set-key (kbd "M-;") 'comment-dwim-line)
 ;; see emacs wiki on "CommentingCode" for alternative that comments full lines containing region a la eclipse
 
 ;; set flyspell for spellcheck on by default
@@ -30,6 +30,16 @@
   :hook
   ((text-mode . flyspell-mode)
    (prog-mode . flyspell-prog-mode))
+  )
+;; ivy interface for flyspell corrections
+(require-package 'flyspell-correct-ivy)
+(use-package flyspell-correct-ivy
+  :after (ivy flyspell)
+  :bind
+  ((:map flyspell-mode-map
+	 ("C-;" . flyspell-correct-wrapper)))
+  :init
+  (setq flyspell-correct-interface #'flyspell-correct-ivy)
   )
 
 
