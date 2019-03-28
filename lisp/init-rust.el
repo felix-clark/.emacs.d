@@ -1,5 +1,6 @@
 ;;; init-rust.el --- Rust utilities
 ;;; Commentary:
+;;; TODO: clean up with use-package
 ;;; Code:
 
 (require 'init-elpa)
