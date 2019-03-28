@@ -1,11 +1,17 @@
+;;; init-flycheck.el --- configuration of flycheck
+;;; Commentary:
+;;; Code:
+
 (require 'init-elpa)
 
-(require-package 'flycheck)
 (use-package flycheck
   :ensure t
   :init
+  (require-package 'flycheck)
   (global-flycheck-mode)
   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
+  ;; disable warning about only 1 space after period
+  (setq sentence-end-double-space nil)
   )
 
 (use-package flycheck-color-mode-line
@@ -19,3 +25,4 @@
   )
   
 (provide 'init-flycheck)
+;;; init-flycheck.el ends here
