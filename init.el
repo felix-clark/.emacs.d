@@ -2,8 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-;; debuging
-(setq debug-on-error t)
+;; debug info, this can however become annoying in normal use
+;; (setq debug-on-error t)
 
 ;; look in the "lisp" directory for additional custom macros
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
