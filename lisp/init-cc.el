@@ -1,8 +1,12 @@
-;;; init-c.el --- for C/C++/C#.
+;;; init-cc.el --- for C/C++/C#.
 ;;; Commentary:
 ;;; TODO: At the moment, tab completion doesn't actually seem to work.
 ;;; we need more configuration with irony/clang.
-;;; look into rtags as well. conflict with irony?
+;;; see "Compilation Database" in irony documentation.
+;;; might need to overwrite company-backends or remove some.
+;;; look into rtags as well (company-rtags, flycheck-rtags, ivy-rtags).
+;;; for completion, will need to choose between company-rtags and company-irony.
+;;; check out cmake-ide for a complete package
 ;;; Code:
 (require 'init-company)
 
@@ -13,12 +17,12 @@
 )
 
 ;; use irony for c-type
-;; (require-package 'irony)
 ;; will need to run irony-install-server manually to set up server
 ;; see https://github.com/Sarcasm/irony-mode/issues/167
 ;; on ubuntu install libclang-3.8-dev (for instance)
-
 (use-package irony
+  :after (counsel)
+  :init (require-package 'irony)
   ;; activate for common c-like languages
   ;; :hook (c++-mode c-mode objc-mode)
   ;; :hook ((c++-mode c-mode objc-mode) . irony-mode)
@@ -26,19 +30,19 @@
   :config
   ;; use suggested configuration
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  )
-;; use counsel-irony
-;; possibly can put this into use-pacakge :config area
-(defun use-counsel-irony ()
-  (define-key irony-mode-map
+  
+  ;; use counsel-irony
+  (defun use-counsel-irony ()
+    (define-key irony-mode-map
       [remap completion-at-point] 'counsel-irony)
-  (define-key irony-mode-map
+    (define-key irony-mode-map
       [remap complete-symbol] 'counsel-irony))
-(add-hook 'irony-mode-hook 'use-counsel-irony)
+  (add-hook 'irony-mode-hook 'use-counsel-irony)
+  )
 
 ;; activate irony-eldoc
 (use-package irony-eldoc
-  :after (eldoc irony)
+  :after (irony eldoc)
   :init
   (require-package 'irony-eldoc)
   :config
@@ -99,8 +103,6 @@
 
 ;; having some difficulty with company-clang. try irony instead?
 ;; (require 'init-company)
-
-;; (require-package 'company-c-headers)
 
 
 ;; need to remove company-semantic from company-backends because it will take precedence over company-clang
