@@ -18,6 +18,7 @@
   :commands
   flycheck-color-mode-line-mode
   :init
+  (require-package 'flycheck-color-mode-line)
   (add-hook 'flycheck-mode-hook #'flycheck-color-mode-line-mode)
   ;; ;; one of these is supposed to work instead:
   ;; :hook (flycheck-mode . flycheck-color-mode-line)
