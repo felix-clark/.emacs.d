@@ -11,6 +11,8 @@
   )
 
 (use-package company-quickhelp
+  :init
+  (require-package 'company-quickhelp)
   :config
   (company-quickhelp-mode)
   )

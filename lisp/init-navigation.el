@@ -100,7 +100,10 @@
   :after (counsel projectile)
   )
 
-(use-package ibuffer-projectile)
+(use-package ibuffer-projectile
+  :init
+  (require-package 'ibuffer-projectile)
+  )
   
 
 ;; amx is an active fork of smex for improved M-x utility

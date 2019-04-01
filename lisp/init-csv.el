@@ -4,6 +4,8 @@
 
 (require 'init-elpa)
 (use-package csv-mode
+  :init
+  (require-package 'csv-mode)
   ;; :mode ("\\.[Cc][Ss][Vv]\\'" . csv-mode) ; redundant?
   :config
   ;; (add-auto-mode 'csv-mode "\\.[Cc][Ss][Vv]\\'")

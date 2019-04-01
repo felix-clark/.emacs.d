@@ -71,6 +71,7 @@
 
 ;; may take some more configuration to find the right directory, see github
 (use-package company-c-headers
+  :init (require-package 'company-c-headers)
   :after (company)
   :config
   (add-to-list 'company-backends 'company-c-headers)
