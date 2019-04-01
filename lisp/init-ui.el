@@ -25,11 +25,15 @@
 
 ;; make the window with the cursor larger
 (use-package golden-ratio
-  :init (golden-ratio-mode)
+  :init
+  (require-package 'golden-ratio)
+  (golden-ratio-mode)
   )
 
 (use-package which-key
-  :init (which-key-mode)
+  :init
+  (require-package 'which-key)
+  (which-key-mode)
   )
 
 
@@ -47,7 +51,9 @@
 
 ;; zenburn is a popular vi theme
 (use-package zenburn-theme
-  :init (load-theme 'zenburn t) ;; not sure what passing "true" here does
+  :init
+  (require-package 'zenburn-theme)
+  (load-theme 'zenburn t) ;; not sure what passing "true" here does
   )
 
 
