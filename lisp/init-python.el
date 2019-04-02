@@ -30,9 +30,16 @@
 ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
 ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-(use-package ein)
-(use-package ein-notebook)
-(use-package ein-subpackages)
+(use-package ein
+  :init (require-package 'ein)
+  )
+;; these aren't real packages?
+;; (use-package ein-notebook
+;;   :init (require-package 'ein-notebook)
+;;   )
+;; (use-package ein-subpackages
+;;   :init (require-package 'ein-subpackages)
+;; )
 
 (provide 'init-python)
 ;;; init-python.el ends here
