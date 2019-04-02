@@ -44,7 +44,7 @@
 ;; not much point in actually loading multiple.
 
 ;; solarized comes with nice-looking light and dark themes
-(require-package 'solarized-theme)
+;; (require-package 'solarized-theme)
 ;; see github for solarized options, they go before load-theme
 ;; (load-theme 'solarized-dark-theme)
 ;; (load-theme 'solarized-light-theme)
