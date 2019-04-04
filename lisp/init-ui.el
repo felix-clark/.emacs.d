@@ -18,6 +18,15 @@
 ;; turn off the scrollbar
 (scroll-bar-mode -1)
 
+;; smooth scrolling
+(use-package smooth-scrolling
+  :init
+  (require-package 'smooth-scrolling)
+  :config
+  (smooth-scrolling-mode)
+  (setq smooth-scroll-margin 8) ; default is 10
+  )
+
 ;; start in fullscreen mode
 ;; use frame-fullscreen to remove Ubuntu menu bar as well
 ;; (toggle-full-screen)

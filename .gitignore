@@ -26,3 +26,5 @@ amx-items
 anaconda-mode/
 transient/
 irony/
+ac-comphist.dat
+request/
