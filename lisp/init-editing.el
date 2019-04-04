@@ -25,6 +25,10 @@
 (global-set-key (kbd "M-;") 'comment-dwim-line)
 ;; see emacs wiki on "CommentingCode" for alternative that comments full lines containing region a la eclipse
 
+;; enable changing region to upper and lower case
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 ;; set flyspell for spellcheck on by default
 (use-package flyspell
   :hook
