@@ -8,6 +8,12 @@
   :config
   (setq company-tooltip-align-annotations t)
   (global-company-mode)
+  ;; use C-[np] instead of M-[np] to move within company completion menu
+  :bind (:map company-active-map
+	      ("M-n" . nil)
+	      ("M-p" . nil)
+	      ("C-n" . #'company-select-next)
+	      ("C-p" . #'company-select-previous))
   )
 
 (use-package company-quickhelp
