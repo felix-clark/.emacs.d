@@ -18,6 +18,10 @@
 ;; turn off the scrollbar
 (scroll-bar-mode -1)
 
+;; lets us label modes as silent
+(use-package diminish
+  :init (require-package 'diminish))
+
 ;; smooth scrolling
 (use-package smooth-scrolling
   :init
@@ -37,14 +41,15 @@
   :init
   (require-package 'golden-ratio)
   (golden-ratio-mode)
+  :diminish
   )
 
 (use-package which-key
   :init
   (require-package 'which-key)
   (which-key-mode)
+  :diminish
   )
-
 
 ;; Setting themes
 ;; when multiple themes are loaded then one can simply

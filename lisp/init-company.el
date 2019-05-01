@@ -5,6 +5,7 @@
 
 (use-package company
   :ensure t
+  :diminish (company-mode)
   :config
   (setq company-tooltip-align-annotations t)
   (global-company-mode)

@@ -6,6 +6,7 @@
 
 (use-package flycheck
   :ensure t
+  :diminish
   :init
   (require-package 'flycheck)
   (global-flycheck-mode)

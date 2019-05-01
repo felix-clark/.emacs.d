@@ -10,6 +10,13 @@
 ;; always show column number (line-number-mode is on by default)
 (setq column-number-mode t)
 
+;; expand selection to semantic region naturally
+;; C-= to expand; press '-' to undo.
+(use-package expand-region
+  :ensure t
+  :bind ("C-=" . er/expand-region)
+  )
+
 ;; Original idea from
 ;; http://www.opensubscriber.com/message/emacs-devel@gnu.org/10971693.html
 (defun comment-dwim-line (&optional arg)
@@ -31,6 +38,7 @@
 
 ;; set flyspell for spellcheck on by default
 (use-package flyspell
+  :diminish
   :hook
   ((text-mode . flyspell-mode)
    (prog-mode . flyspell-prog-mode))
@@ -54,7 +62,9 @@
 ;; (setq-default save-place t)
 ;; (setq save-place-file (concat user-emacs-directory "places"))
 ;; if slow to exit, try adding (setq save-place-forget-unreadable-files nil)
-(save-place-mode 1) ;; change all this to this single line with emacs 25
+(unless (version< emacs-version "25")
+  (save-place-mode 1))
+
 
 ;; different coloring of successive delimiter levels
 (require-package 'rainbow-delimiters)

@@ -37,6 +37,7 @@
 ;; fuzzy matching can be activated with ivy--regex-fuzzy, but let's keep that off for now.
 (use-package ivy
   :ensure t
+  :diminish
   :init
   (require-package 'ivy)
   (ivy-mode)
@@ -55,6 +56,7 @@
 
 (use-package counsel
   :ensure t
+  :diminish
   :init
   (require-package 'counsel)
   ;; overrides many common key bindings (like find-file)
@@ -87,6 +89,7 @@
   ;; use projectile mode in standard commands instead of setting separate bindings
   ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
   (projectile-mode)
+  :diminish
   :config
   ;; use ivy with projectile
   (setq projectile-completion-system 'ivy)
