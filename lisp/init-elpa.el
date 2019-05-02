@@ -35,6 +35,11 @@
 ;; TODO: we should replace remaining uses of above functions with use-pacakge
 ;; macro for simple configuration
 (require-package 'use-package)
+(setq use-package-always-ensure t)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
