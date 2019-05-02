@@ -11,10 +11,11 @@
 (setq column-number-mode t)
 
 ;; expand selection to semantic region naturally
-;; C-= to expand; press '-' to undo.
+;; C-= to expand; C-- to undo.
 (use-package expand-region
   :ensure t
-  :bind ("C-=" . er/expand-region)
+  :bind (("C-=" . er/expand-region)
+	 ("C--" . er/contract-region))
   )
 
 ;; Original idea from
