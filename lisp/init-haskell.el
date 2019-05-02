@@ -4,7 +4,18 @@
 ;;; auto-complete sems slow, check if company mode is conflicting
 ;;; Code:
 
-(require-package 'haskell-mode)
+
+(use-package haskell-mode
+  :init (require-package 'haskell-mode)
+  :bind (:map haskell-mode-map
+	      ("C-c h" . hoogle)
+	      ("C-o" . open-line))
+  
+  )
+
+
+
+;; (require-package 'haskell-mode)
 
 (when (maybe-require-package 'intero)
   (after-load 'haskell-mode
@@ -36,12 +47,17 @@
 
 ;; could have hindent in here
 
-(after-load 'haskell-mode
-	    (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
-	    (define-key haskell-mode-map (kbd "C-o") 'open-line))
+;; (after-load 'haskell-mode
+;; 	    (define-key haskell-mode-map (kbd "C-c h") 'hoogle)
+;; 	    (define-key haskell-mode-map (kbd "C-o") 'open-line))
 
-(after-load 'page-break-lines
-	    (push 'haskell-mode page-break-lines-modes))
+(use-package page-break-lines
+  :init (require-package 'page-break-lines)
+  :config
+  (push 'haskell-mode page-break-lines-modes)
+  )
+;; (after-load 'page-break-lines
+;; 	    (push 'haskell-mode page-break-lines-modes))
 
 (define-minor-mode stack-exec-path-mode
   "If this is a stack project, set `exec-path' to the path \"stack exec\" would use."
