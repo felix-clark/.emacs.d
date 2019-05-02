@@ -1,20 +1,20 @@
-;;; init-org.el --- activate org mode
+;;; init - org.el-- - activate org mode;
 ;;; Commentary:
-;;; enables org mode in .org files
+;;; enables org mode in.org files
 ;;; Code:
 
-(require 'org)
-;; set some other global key bindings for use outside of org mode
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-(global-set-key (kbd "C-c b") 'org-switchb)
-(setq org-log-done t)
-
-;; turn on line wrapping and indentation, which for some reason is disabled by default.
-(add-hook 'org-mode-hook '(lambda ()
-                            (visual-line-mode)
-                            (org-indent-mode)))
+(use-package org
+  ;; turn on line wrapping and indentation, which for some reason is disabled by default.
+  :hook (org-mode . (visual-line-mode
+		     org-indent-mode))
+  ;; set some other global key bindings for use outside of org mode
+  ;; if they're global, should they be within the org-mode config?
+  :bind (("C-c l" . org-store-link)
+	 ("C-c a" . org-agenda)
+	 ("C-c c" . org-capture)
+	 ("C-c b" . 'org-switchb))
+  :config (setq org-log-done t)
+  )
 
 (provide 'init-org)
 ;;; init-org.el ends here
