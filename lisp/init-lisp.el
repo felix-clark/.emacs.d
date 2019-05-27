@@ -18,12 +18,5 @@
   (add-hook 'after-init-hook 'auto-compile-on-save-mode)
   (add-hook 'after-init-hook 'auto-compile-on-load-mode))
 
-
-;; (when (maybe-require-package 'flycheck)
-;;   (require-package 'flycheck-package)
-;;   (after-load 'flycheck
-;;     (after-load 'elisp-mode
-;;       (flycheck-package-setup))))
-
 (provide 'init-lisp)
 ;;; init-lisp.el ends here

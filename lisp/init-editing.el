@@ -13,6 +13,7 @@
 ;; expand selection to semantic region naturally
 ;; C-= to expand; C-- to undo.
 (use-package expand-region
+  :init (require-package 'expand-region)
   :ensure t
   :bind (("C-=" . er/expand-region)
 	 ("C--" . er/contract-region))
