@@ -1,7 +1,5 @@
 ;;; init-python --- Python utility
 ;;; Commentary:
-;;; anaconda-mode and company-anaconda doesn't seem to be as good with auto-completions as basic company mode.
-;;; this should be played with more (don't forget to remove .elc)
 ;;; Code:
 
 (require 'init-elpa)
