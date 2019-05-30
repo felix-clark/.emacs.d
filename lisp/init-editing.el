@@ -15,6 +15,7 @@
   :config (ws-butler-global-mode)
   ;; to only turn it on in programming mode, do something like:
   ;; :hook (prog-mode . ws-butler-mode)
+  :diminish
   )
 
 ;; expand selection to semantic region naturally
