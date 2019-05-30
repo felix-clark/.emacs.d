@@ -14,9 +14,12 @@
 ;; Automatic byte compilation
 ;; ----------------------------------------------------------------------------
 ;; requires emacs 25
-(when (maybe-require-package 'auto-compile)
-  (add-hook 'after-init-hook 'auto-compile-on-save-mode)
-  (add-hook 'after-init-hook 'auto-compile-on-load-mode))
+(when (version<= "25" emacs-version)
+  (use-package auto-compile
+    :hook ((after-init . auto-compile-on-save-mode)
+	   (after-init . auto-compile-on-load-mode))
+    )
+  )
 
 (provide 'init-lisp)
 ;;; init-lisp.el ends here
