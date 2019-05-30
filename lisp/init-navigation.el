@@ -83,31 +83,32 @@
 ;; use ibuffer interface for switching buffers to override list-buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(use-package projectile
-  :if (version<= "25.1" emacs-version)
-  :init
-  (require-package 'projectile)
-  ;; use projectile mode in standard commands instead of setting separate bindings
-  ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
-  (projectile-mode)
-  :diminish
-  :config
-  ;; use ivy with projectile
-  (setq projectile-completion-system 'ivy)
-  :after (ivy)
+(when (version<= "25.1" emacs-version)
+  (use-package projectile
+    :init
+    (require-package 'projectile)
+    ;; use projectile mode in standard commands instead of setting separate bindings
+    ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
+    (projectile-mode)
+    :diminish
+    :config
+    ;; use ivy with projectile
+    (setq projectile-completion-system 'ivy)
+    :after (ivy)
+    )
   )
 
 (use-package counsel-projectile
   :init
   (require-package 'counsel-projectile)
   (counsel-projectile-mode)
-  :after (counsel projectile)
+  :requires (counsel projectile)
   )
 
 (use-package ibuffer-projectile
   :init
   (require-package 'ibuffer-projectile)
-  :after (projectile)
+  :requires (projectile)
   )
   
 
