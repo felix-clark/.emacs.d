@@ -12,6 +12,8 @@
     ;; for ido compatibility
     (setq magit-completing-read-function 'magit-ivy-completing-read)
     :after (ivy)
+    ;; Magit invokes ARev mode, which we don't need to be reminded of.
+    :diminish (auto-revert-mode)
     )
   )
 
