@@ -10,6 +10,13 @@
 ;; always show column number (line-number-mode is on by default)
 (setq column-number-mode t)
 
+(use-package ws-butler
+  :init (require-package 'ws-butler)
+  :config (ws-butler-global-mode)
+  ;; to only turn it on in programming mode, do something like:
+  ;; :hook (prog-mode . ws-butler-mode)
+  )
+
 ;; expand selection to semantic region naturally
 ;; C-= to expand; C-- to undo.
 (use-package expand-region
@@ -46,16 +53,15 @@
    (prog-mode . flyspell-prog-mode))
   )
 ;; ivy interface for flyspell corrections
-(require-package 'flyspell-correct-ivy)
 (use-package flyspell-correct-ivy
-  :after (ivy flyspell)
+  :init
+  (require-package 'flyspell-correct-ivy)
+  (setq flyspell-correct-interface #'flyspell-correct-ivy)
+  :requires (ivy flyspell)
   :bind
   ((:map flyspell-mode-map
 	 ("C-;" . flyspell-correct-wrapper)))
-  :init
-  (setq flyspell-correct-interface #'flyspell-correct-ivy)
   )
-
 
 ;; return to last place you were in when the file was opened
 ;; saved in ~/.emacs.d/places/, or ~/.emacs-places in older versions.
