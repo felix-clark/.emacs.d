@@ -83,6 +83,7 @@
 ;; use ibuffer interface for switching buffers to override list-buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;; projectile is only supported for version 25.1 and later
 (when (version<= "25.1" emacs-version)
   (use-package projectile
     :init
@@ -96,20 +97,22 @@
     (setq projectile-completion-system 'ivy)
     :after (ivy)
     )
-  )
 
-(use-package counsel-projectile
-  :init
-  (require-package 'counsel-projectile)
-  (counsel-projectile-mode)
-  :requires (counsel projectile)
-  )
+  (use-package counsel-projectile
+    :init
+    (require-package 'counsel-projectile)
+    (counsel-projectile-mode)
+    :requires (counsel projectile)
+    )
 
-(use-package ibuffer-projectile
-  :init
-  (require-package 'ibuffer-projectile)
-  :requires (projectile)
-  )
+  (use-package ibuffer-projectile
+    :init
+    (require-package 'ibuffer-projectile)
+    :requires (projectile)
+    )
+  
+  ) ; when (version<= 25.1 emacs-version)
+
   
 
 ;; amx is an active fork of smex for improved M-x utility
