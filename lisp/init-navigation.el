@@ -43,7 +43,7 @@
   (ivy-mode)
   :config
   (setq ivy-use-virtual-buffers t) ; possibly needed for recentf
-  (setq ivy-height 16) ;; optional; default is 10
+  (setq ivy-height 13) ;; optional; default is 10
   (setq ivy-count-format "(%d/%d) ")
   :bind
   (("C-c C-r" . ivy-resume)
