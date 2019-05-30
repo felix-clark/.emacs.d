@@ -7,6 +7,10 @@
 ;; (setq debug-on-error t)
 
 ;; look in the "lisp" directory for additional custom macros
+
+;; We have this line in init-elpa, but Package.el adds it if we don't have it.
+;; (package-initialize)
+
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; let flycheck find the emacs config files
@@ -18,7 +22,8 @@
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;; custom lisp functions
-(require 'init-utils)
+;; these are not required not that we use use-package
+;; (require 'init-utils)
 
 ;; load the code to deal with packages
 (require 'init-elpa)

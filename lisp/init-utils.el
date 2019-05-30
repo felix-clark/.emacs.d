@@ -1,6 +1,7 @@
 ;;; init-utils.el --- Helper functions for emacs config
 ;;; Commentary:
 ;;; stolen from parts of Purcell
+;;; Now that we mostly use use-package, these may not be necessary at all
 ;;; Code:
 
 ;; do something after another package is loaded
