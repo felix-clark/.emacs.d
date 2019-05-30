@@ -12,23 +12,23 @@
 ;; (define-key company-mode-map (kbd "TAB") #'company-complete-common-or-cycle)
 ;;(define-key company-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
-;; anaconda-mode requires emacs 25
-(when (maybe-require-package 'anaconda-mode)
-  (after-load 'python
-    (add-hook 'python-mode-hook 'anaconda-mode)
-    (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
-  (when (maybe-require-package 'company-anaconda)
-    (after-load 'company
-      (after-load 'python
-	(push 'company-anaconda company-backends)))))
-
-;; seems like flycheck already activated
-;; (require-package 'flycheck)
-;; (when (require 'flycheck nil t)
-;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 (when (version<= "25" emacs-version)
+  ;; anaconda-mode requires emacs 25
+  (use-package anaconda-mode
+    :init (require-package 'anaconda-mode)
+    :after (python)
+    ;; diminishing eldoc mode might be nice
+    :hook ((python-mode . anaconda-mode)
+	   (python-mode . anaconda-eldoc-mode))
+    )
+
+  (use-package company-anaconda
+    :init (require-package 'company-anaconda)
+    :after (company anaconda-mode)
+    :config (push 'company-anaconda company-backends)
+    )
+  
   (use-package ein
     :init (require-package 'ein)
     )
@@ -40,6 +40,14 @@
 ;;   :init (require-package 'ein-subpackages)
 ;; )
   )
+
+;; seems like flycheck already activated
+;; if we use elpy we can try to make it work with flycheck
+;; (require-package 'flycheck)
+;; (when (require 'flycheck nil t)
+;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;   (add-hook 'elpy-mode-hook 'flycheck-mode))
+
 
 (provide 'init-python)
 ;;; init-python.el ends here
