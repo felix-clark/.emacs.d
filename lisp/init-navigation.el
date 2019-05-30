@@ -84,6 +84,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (use-package projectile
+  :if (version<= "25.1" emacs-version)
   :init
   (require-package 'projectile)
   ;; use projectile mode in standard commands instead of setting separate bindings
@@ -106,6 +107,7 @@
 (use-package ibuffer-projectile
   :init
   (require-package 'ibuffer-projectile)
+  :after (projectile)
   )
   
 
