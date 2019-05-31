@@ -7,7 +7,11 @@
   :ensure t
   :diminish (company-mode)
   :config
-  (setq company-tooltip-align-annotations t)
+  (setq company-tooltip-align-annotations t
+	company-minimum-prefix-length 2
+	;; show numbers to make it easier to select with M-#
+	company-show-numbers t
+	)
   (global-company-mode)
   ;; we could use C-[np] instead of M-[np] to move within company completion menu
   ;; but it can be nice to have it be different
