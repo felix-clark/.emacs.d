@@ -14,6 +14,8 @@
     :after (ivy)
     ;; Magit invokes ARev mode, which we don't need to be reminded of.
     :diminish (auto-revert-mode)
+    ;; bind shortcut to git-mode
+    :bind ("C-x g" . magit-status)
     )
   )
 
