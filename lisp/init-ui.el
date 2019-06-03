@@ -51,6 +51,9 @@
   :diminish
   )
 
+;; eldoc for function signature description
+(require 'eldoc)
+
 ;; Setting themes
 ;; when multiple themes are loaded then one can simply
 ;; be enabled: (enable-theme 'my-theme)
