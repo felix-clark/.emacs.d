@@ -34,6 +34,7 @@
 
 ;; this line is required to avoid errors in byte-compilation.
 ;; use-package should probably require this itself.
+(require-package 'bind-key)
 (require 'bind-key)
 
 ;; TODO: we should replace remaining uses of above functions with use-pacakge
