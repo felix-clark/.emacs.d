@@ -19,11 +19,9 @@
 ;; byte-compile everything that hasn't already been for speed
 ;; this can also cause "Invalid function; after-load"
 ;; so remove all .elc when messing with that
+;; this doesn't generally save much time (~ 0.05 s) and makes debugging
+;; difficult so it really isn't worth it if things are changing at all
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
-
-;; custom lisp functions
-;; these are not required not that we use use-package
-;; (require 'init-utils)
 
 ;; load the code to deal with packages
 (require 'init-elpa)
