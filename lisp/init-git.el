@@ -8,6 +8,7 @@
 (when (version<= "25" emacs-version)
   (use-package magit
     :init (require-package 'magit)
+    :defer t
     :config
     ;; for ido compatibility
     (setq magit-completing-read-function 'magit-ivy-completing-read)
