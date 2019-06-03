@@ -42,8 +42,8 @@
   :diminish
   :init
   (require-package 'ivy)
-  :config
   (ivy-mode)
+  :config
   (setq ivy-use-virtual-buffers t) ; possibly needed for recentf
   (setq ivy-height 13) ;; optional; default is 10
   (setq ivy-count-format "(%d/%d) ")
@@ -61,6 +61,8 @@
   :diminish
   :init
   (require-package 'counsel)
+  ;; overrides many common key bindings (like find-file)
+  (counsel-mode)
   :bind
   (
    ("<f2> u" . counsel-unicode-char)
@@ -73,8 +75,6 @@
    ("C-S-o" . counsel-rhythmbox)
    )
   :config
-  ;; overrides many common key bindings (like find-file)
-  (counsel-mode)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   ;; remove initial "^" in minibuffer
   (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
@@ -90,11 +90,11 @@
   (use-package projectile
     :init
     (require-package 'projectile)
-    :diminish
-    :config
     ;; use projectile mode in standard commands instead of setting separate bindings
     ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
     (projectile-mode)
+    :diminish
+    :config
     ;; use ivy with projectile
     (setq projectile-completion-system 'ivy)
     :after (ivy)
@@ -116,7 +116,6 @@
   
   ) ; when (version<= 25.1 emacs-version)
 
-  
 
 ;; amx is an active fork of smex for improved M-x utility
 ;; it automatically detects if ido or ivy is setup and if so it uses that back-end
