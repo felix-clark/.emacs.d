@@ -3,7 +3,6 @@
 ;;; Code:
 
 (require 'init-elpa)
-(require 'init-utils)
 
 ;; ----------------------------------------------------------------------------
 ;; Load .el if newer than corresponding .elc
