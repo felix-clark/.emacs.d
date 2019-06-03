@@ -28,6 +28,9 @@
 ;; load the code to deal with packages
 (require 'init-elpa)
 
+;; performance and profiling
+(require 'init-profile)
+
 ;; code to handle UI aesthetics
 (require 'init-ui)
 
