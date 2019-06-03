@@ -1,47 +1,21 @@
 ;;; init-rust.el --- Rust utilities
 ;;; Commentary:
-;;; TODO: clean up with use-package
 ;;; Code:
 
 (require 'init-elpa)
 (require 'init-company)
 
-(require-package 'racer)
-(require-package 'rust-mode)
-(require-package 'flycheck)
-
-(require 'racer)
-(require 'rust-mode)
-(require 'eldoc)
-(require 'flycheck)
-
-;; this is probably not necessary, since emacs seems to understand that .rs are rust files
-;; (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-
-;; easy building with `C-c C-c C-*` where *={b|r|t} for `cargo {build|run|test}`
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
-
-;; use racer with company-mode for tab auto-completion
-(add-hook 'rust-mode-hook #'racer-mode)
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook #'company-mode) ;; should already be included
-
-;; there are other options, like
-;; company-complete-common-or-cycle
-(define-key racer-mode-map (kbd "TAB") #'company-indent-or-complete-common)
-
-;; flycheck-rust is not on MELPA stable
-(when (maybe-require-package 'flycheck-rust)
-  (after-load 'rust-mode
-    (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)))
-
-;; setup rust-format-buffer
-;; could also use rust-format-on-save
-;; (add-hook 'rust-mode-hook
-;; 	  '(lambda ()
-;; 	     (local-set-key  (kbd "C-c TAB") #'rust-format-buffer)))
-
-(after-load 'rust-mode
+(use-package rust-mode
+  :init (require-package 'rust-mode)
+  :defer t
+  :hook (
+	 ;; easy building with `C-c C-c C-*` where *={b|r|t} for `cargo {build|run|test}`
+	 (rust-mode . cargo-minor-mode)
+	 (rust-mode . racer-mode))
+  ;; :bind (:map rust-mode-map
+  ;; ;; we are using format-on-save but we could switch to this:
+  ;; 	      ("C-c TAB" . rust-format-buffer))
+  :config
   (setq rust-format-on-save t)
   ;; use rustup binaries PATH; doesn't appear necessary
   ;; (setq racer-cmd "~/.cargo/bin/racer")
@@ -50,6 +24,24 @@
 			     ;; get rustsrc location and delete trailing '\n'
 			     (substring (shell-command-to-string "rustc --print sysroot") 0 -1)
 			     "/lib/rustlib/src/rust/src"))
+  )
+
+(use-package racer
+  :after (rust-mode)
+  :init (require-package 'racer)
+  ;; we're using global eldoc and company modes so we don't need to add these
+  ;; :hook ((racer-mode . eldoc-mode) ; is eldoc not already activated? TODO:check
+  ;; 	 (racer-mode . company-mode) ; should be included
+  ;; 	 )
+  ;; there are other options like company-complete-common-or-cycle
+  :bind (:map racer-mode-map
+	      ("TAB" . company-indent-or-complete-common))
+  )
+
+;; flycheck-rust is not on MELPA stable
+(use-package flycheck-rust
+  :after rust-mode
+  :hook (flycheck-mode . flycheck-rust-setup)
   )
 
 (provide 'init-rust)
