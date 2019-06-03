@@ -10,6 +10,9 @@
 ;; always show column number (line-number-mode is on by default)
 (setq column-number-mode t)
 
+;; Increase the default paragraph width for M-q
+(setq-default fill-column 80)
+
 (use-package ws-butler
   :init (require-package 'ws-butler)
   :config (ws-butler-global-mode)
