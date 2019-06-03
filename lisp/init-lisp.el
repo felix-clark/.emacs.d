@@ -15,6 +15,7 @@
 ;; requires emacs 25
 (when (version<= "25" emacs-version)
   (use-package auto-compile
+    :init (require-package 'auto-compile)
     :hook ((after-init . auto-compile-on-save-mode)
 	   (after-init . auto-compile-on-load-mode))
     )
