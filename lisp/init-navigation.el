@@ -7,8 +7,8 @@
 (use-package recentf
   :init
   (require-package 'recentf)
-  (recentf-mode)
   :config
+  (recentf-mode)
   (setq recentf-save-file (concat user-emacs-directory ".recentf"))
   (setq recentf-max-menu-items 40)
   )
@@ -40,8 +40,8 @@
   :diminish
   :init
   (require-package 'ivy)
-  (ivy-mode)
   :config
+  (ivy-mode)
   (setq ivy-use-virtual-buffers t) ; possibly needed for recentf
   (setq ivy-height 13) ;; optional; default is 10
   (setq ivy-count-format "(%d/%d) ")
@@ -59,8 +59,6 @@
   :diminish
   :init
   (require-package 'counsel)
-  ;; overrides many common key bindings (like find-file)
-  (counsel-mode)
   :bind
   (
    ("<f2> u" . counsel-unicode-char)
@@ -73,6 +71,8 @@
    ("C-S-o" . counsel-rhythmbox)
    )
   :config
+  ;; overrides many common key bindings (like find-file)
+  (counsel-mode)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
   ;; remove initial "^" in minibuffer
   (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
@@ -88,21 +88,22 @@
   (use-package projectile
     :init
     (require-package 'projectile)
+    :diminish
+    :config
     ;; use projectile mode in standard commands instead of setting separate bindings
     ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
     (projectile-mode)
-    :diminish
-    :config
     ;; use ivy with projectile
     (setq projectile-completion-system 'ivy)
     :after (ivy)
     )
 
   (use-package counsel-projectile
+    :requires (counsel projectile)
     :init
     (require-package 'counsel-projectile)
+    :config
     (counsel-projectile-mode)
-    :requires (counsel projectile)
     )
 
   (use-package ibuffer-projectile

@@ -9,6 +9,7 @@
   :diminish flycheck-mode
   :init
   (require-package 'flycheck)
+  :config
   (global-flycheck-mode)
   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
   ;; disable warning about only 1 space after period
@@ -20,6 +21,7 @@
   flycheck-color-mode-line-mode
   :init
   (require-package 'flycheck-color-mode-line)
+  :config
   (add-hook 'flycheck-mode-hook #'flycheck-color-mode-line-mode)
   ;; ;; one of these is supposed to work instead:
   ;; :hook (flycheck-mode . flycheck-color-mode-line)
