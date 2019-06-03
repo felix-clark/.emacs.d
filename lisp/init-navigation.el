@@ -106,6 +106,8 @@
     (require-package 'counsel-projectile)
     :config
     (counsel-projectile-mode)
+    ;; counsel does something to find-file, but let's use this explicitly
+    :bind ("C-x C-f" . counsel-projectile-find-file)
     )
 
   (use-package ibuffer-projectile
