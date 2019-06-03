@@ -2,6 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
+;; Make startup faster by reducing the frequency of garbage
+;; collection.  The default is 800 kilobytes.  Measured in bytes.
+;; This will be turned down at the end of the init, but still
+;; above the overly-conservative default.
+(setq gc-cons-threshold (* 50 1000 1000))
+
 ;; debug info, this can however become annoying in normal use
 ;; uncomment when working on .emacs.d
 ;; (setq debug-on-error t)
@@ -70,6 +76,9 @@
 ;;             (require 'server)
 ;;             (unless (server-running-p)
 ;; 	      (server-start))))
+
+;; Make gc pauses after initialization faster by decreasing the threshold.
+(setq gc-cons-threshold (* 2 1000 1000))
 
 (provide 'init)
 ;;; init.el ends here
