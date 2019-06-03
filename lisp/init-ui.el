@@ -52,7 +52,9 @@
   )
 
 ;; eldoc for function signature description
-(require 'eldoc)
+(use-package eldoc
+  :init (require 'eldoc)
+  :diminish)
 
 ;; Setting themes
 ;; when multiple themes are loaded then one can simply
