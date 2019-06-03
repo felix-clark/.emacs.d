@@ -76,6 +76,8 @@
 ;;             (require 'server)
 ;;             (unless (server-running-p)
 ;; 	      (server-start))))
+;; Instead of the above, we can just use 'emacsclient -c --alternate-editor=""'
+;; to automatically start the server if it isn't already.
 
 ;; Make gc pauses after initialization faster by decreasing the threshold.
 (setq gc-cons-threshold (* 2 1000 1000))
