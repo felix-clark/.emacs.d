@@ -3,7 +3,6 @@
 ;;; Code:
 
 (require 'init-elpa)
-(require 'init-company)
 
 (use-package rust-mode
   :init (require-package 'rust-mode)
@@ -27,7 +26,7 @@
   )
 
 (use-package racer
-  :after (rust-mode)
+  :after (company rust-mode)
   :init (require-package 'racer)
   ;; we're using global eldoc and company modes so we don't need to add these
   ;; :hook ((racer-mode . eldoc-mode) ; is eldoc not already activated? TODO:check

@@ -3,7 +3,6 @@
 ;;; Code:
 
 (require 'init-elpa)
-(require 'init-company)
 
 (require-package 'pip-requirements)
 
@@ -26,7 +25,11 @@
   (use-package company-anaconda
     :init (require-package 'company-anaconda)
     :after (company anaconda-mode)
-    :config (push 'company-anaconda company-backends)
+    :config
+    (push 'company-anaconda company-backends)
+    ;;  use with yasnippet
+    ;; we are applying this map to all backends in the company config now
+    ;; (push (company-mode/backend-with-yas 'company-anaconda) company-backends)
     )
   
   (use-package ein

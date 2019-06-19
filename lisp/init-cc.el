@@ -8,7 +8,6 @@
 ;;; for completion, will need to choose between company-rtags and company-irony.
 ;;; check out cmake-ide for a complete package
 ;;; Code:
-(require 'init-company)
 
 (use-package cc-mode
   :defer t ;; should autoload only in the right modes
@@ -65,8 +64,12 @@
   :init
   (require-package 'company-irony)
   :config
-  (eval-after-load 'company
-    '(add-to-list 'company-backends 'company-irony))
+  ;; (eval-after-load 'company
+  ;;   '(add-to-list 'company-backends 'company-irony))
+  (push 'company-irony company-backends)
+  ;; use yasnippet version, and assume use-package takes care of loading.
+  ;; but now we edit every element of company-backends to be used w/ yasnippet, so the above line is sufficient.
+  ;; '(add-to-list 'company-backends (company-mode/backend-with-yas 'company-irony))
   )
 
 ;; may take some more configuration to find the right directory, see github
@@ -100,13 +103,10 @@
   )
 
 
-;; garbage?
-
-;; having some difficulty with company-clang. try irony instead?
-;; (require 'init-company)
-
+;; is the rest of this garbage?
 
 ;; need to remove company-semantic from company-backends because it will take precedence over company-clang
+;; company-irony is better though
 
 ;; (add-hook 'c-mode-common-hook
 ;; 	  (after-load 'company
