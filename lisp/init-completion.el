@@ -11,7 +11,7 @@
   :config
   ;; without this the tables don't get loaded
   (yas-reload-all)
-  ;; add a directory for extra snippets? this is done by default
+  ;; This directory for custom snippets is included by default.
   ;; (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
   (yas-global-mode t)
   )
