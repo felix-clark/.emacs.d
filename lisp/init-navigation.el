@@ -15,6 +15,13 @@
   (setq recentf-max-menu-items 40)
   )
 
+;; better sorting of completion results
+(use-package prescient
+  :init (require-package 'prescient)
+  ;; save usage statistics between sessions
+  :config (prescient-persist-mode)
+  )
+
 ;; ;; ido: interactive do. try ivy instead.
 ;; (require 'ido)
 ;; ;; turn on ido mode
@@ -81,6 +88,11 @@
   ;; (setq ivy-initial-inputs-alist nil) ;; this removes "^" in all ivy commands
   )
 
+(use-package ivy-prescient
+  :requires (ivy prescient)
+  :init (require-package 'ivy-prescient)
+  :config (ivy-prescient-mode)
+  )
 
 ;; use ibuffer interface for switching buffers to override list-buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)

@@ -55,6 +55,8 @@
     (setq company-backends
 	  (mapcar #'company-mode/backend-with-yas company-backends)))
   (add-hook 'company-mode-hook 'set-yas-as-company-backend)
+  ;;  is this needed for yasnippet?
+  (setq company-transformers '(company-sort-by-backend-importance))
   )
 
 (use-package company-quickhelp
@@ -63,6 +65,10 @@
   (require-package 'company-quickhelp)
   :config
   (company-quickhelp-mode)
+  )
+
+(use-package company-prescient
+  :init (require-package 'company-prescient)
   )
 
 ;; These may not really be part of company-mode
