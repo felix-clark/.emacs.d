@@ -6,12 +6,13 @@
 
 (use-package yasnippet
   :init (require-package 'yasnippet)
+  :defer t
   :diminish yas-minor-mode
   :config
-  ;; (yas-reload-all) ;; this is used when used as a non-global minor mode, for
-  ;; instance with a prog-mode hook.
-  ;; add a directory for extra snippets?
-  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
+  ;; without this the tables don't get loaded
+  (yas-reload-all)
+  ;; add a directory for extra snippets? this is done by default
+  ;; (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "snippets"))
   (yas-global-mode t)
   )
 
@@ -55,7 +56,7 @@
     (setq company-backends
 	  (mapcar #'company-mode/backend-with-yas company-backends)))
   (add-hook 'company-mode-hook 'set-yas-as-company-backend)
-  ;;  is this needed for yasnippet?
+  ;;  is this needed for yasnippet? not clear what it does
   (setq company-transformers '(company-sort-by-backend-importance))
   )
 
@@ -73,6 +74,7 @@
 
 ;; These may not really be part of company-mode
 (setq tab-always-indent 'complete)
+;; do we really want completion for initials and acronyms?
 (add-to-list 'completion-styles 'initials t)
 
 (provide 'init-completion)
