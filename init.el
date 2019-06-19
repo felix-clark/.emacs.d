@@ -8,7 +8,7 @@
 ;; above the overly-conservative default.
 (setq gc-cons-threshold (* 50 1000 1000))
 
-;; debug info, this can however become annoying in normal use
+;; debug info, this can however become annoying in normal use.
 ;; uncomment when working on .emacs.d
 ;; (setq debug-on-error t)
 
@@ -22,11 +22,11 @@
 ;; let flycheck find the emacs config files
 (setq-default flycheck-emacs-lisp-load-path 'inherit)
 
-;; byte-compile everything that hasn't already been for speed
-;; this can also cause "Invalid function; after-load"
-;; so remove all .elc when messing with that
-;; this doesn't generally save much time (~ 0.05 s) and makes debugging
-;; difficult so it really isn't worth it if things are changing at all
+;; byte-compile everything that hasn't already been for speed. this can also
+;; cause "Invalid function; after-load" so make sure to remove all .elc when
+;; messing with that. this doesn't generally save much time (~ 0.05 s) and makes
+;; debugging difficult so it really isn't worth it if things are changing at
+;; all.
 ;; (byte-recompile-directory (expand-file-name "~/.emacs.d") 0)
 
 ;; load the code to deal with packages
@@ -47,8 +47,8 @@
 ;; flycheck is used with other packages
 (require 'init-flycheck)
 
-;; company mode for tab-completion
-(require 'init-company)
+;; company mode for tab-completion and yasnippet for code snippets
+(require 'init-completion)
 
 ;; magit
 (require 'init-git)
