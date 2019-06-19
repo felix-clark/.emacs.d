@@ -57,6 +57,7 @@
 (require 'init-org)
 
 ;; load specific language configurations
+(require 'init-sh)
 (require 'init-lisp)
 (require 'init-python)
 (require 'init-cc)
