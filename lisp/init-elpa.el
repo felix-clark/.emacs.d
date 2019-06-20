@@ -4,27 +4,25 @@
 
 (require 'package)
 
-;; there are fancier versions of these functions in purcell's example
-;; that allow version requirements
-(defun require-package (package)
-  "Install given PACKAGE if it was not installed before."
-  (if (package-installed-p package)
-      t
-    (progn
-      (unless (assoc package package-archive-contents)
-	(package-refresh-contents))
-      (package-install package))))
+;; Use Purcell's definition of require-package. A simpler version fails to
+;; refresh the package contents when the version is out-of-date, which
+;; necessitates manual calling of package-refresh-contents.
+(defun require-package (package &optional min-version no-refresh)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  (or (package-installed-p package min-version)
+      (let* ((known (cdr (assoc package package-archive-contents)))
+             (versions (mapcar #'package-desc-version known)))
+        (if (cl-find-if (lambda (v) (version-list-<= min-version v)) versions)
+            (package-install package)
+          (if no-refresh
+              (error "No version of %s >= %S is available" package min-version)
+            (package-refresh-contents)
+	    (require-package package min-version t))))))
 
-(defun maybe-require-package (package)
- "Try to install given PACKAGE and if unsuccessful return nil and print a warning message."
- (condition-case err
-     (require-package package)
-   (error
-    (message "Could't install optional package `%s': %S" package err)
-    nil)))
-
-;; some packages like flycheck-rust are not in MELPA Stable
-;; when changing this, probably need to run package-refresh-contents
+;; some packages like flycheck-rust are not in MELPA Stablel
+;; manually run (package-refresh-contents) after changing this.
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/") t)
 	     ;; '("melpa-stable" . "https://stable.melpa.org/packages/") t)
@@ -37,7 +35,7 @@
 (require-package 'bind-key)
 (require 'bind-key)
 
-;; TODO: we should replace remaining uses of above functions with use-pacakge
+;; TODO: we should replace remaining uses of above functions with use-package
 ;; macro for simple configuration
 (require-package 'use-package)
 (setq use-package-always-ensure t)
