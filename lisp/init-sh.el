@@ -3,6 +3,9 @@
 ;;; Most shell functionality is built-in, so this will not be large.
 ;;; Code:
 
+(use-package fish-mode
+  :init (require-package 'fish-mode))
+
 (use-package company-shell
   :init
   (require-package 'company-shell)
