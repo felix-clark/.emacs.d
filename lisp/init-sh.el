@@ -4,12 +4,15 @@
 ;;; Code:
 
 (use-package fish-mode
-  :init (require-package 'fish-mode))
+  :init (require-package 'fish-mode)
+  :defer t
+  )
 
 (use-package company-shell
   :init
   (require-package 'company-shell)
   :after company
+  :defer t
   :config
   (push 'company-shell company-backends)
   (push 'company-shell-env company-backends)
