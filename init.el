@@ -63,6 +63,7 @@
 (require 'init-cc)
 (require 'init-rust)
 (require 'init-haskell)
+(require 'init-js)
 
 ;; load other file type configurations
 (require 'init-csv)
