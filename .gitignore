@@ -16,6 +16,9 @@ auto-save-list/
 # Automatic package management with MELPA
 elpa/
 
+# eshell history
+eshell/
+
 # added by other packages
 places
 ido.last
