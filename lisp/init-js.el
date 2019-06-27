@@ -15,8 +15,8 @@
   (eldoc-mode t)
   (tide-hl-identifier-mode +1)
   (company-mode t)
-  ;; (setq typescript-indent-level 2)
-  ;; (setq js2-indent-level 2)
+  (setq typescript-indent-level 2)
+  (setq js2-indent-level 2)
   )
 
 (use-package tide
