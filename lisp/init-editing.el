@@ -80,10 +80,11 @@
 (unless (version< emacs-version "25")
   (save-place-mode 1))
 
-
 ;; different coloring of successive delimiter levels
-(require-package 'rainbow-delimiters)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+(use-package rainbow-delimiters
+  :init (require-package 'rainbow-delimiters)
+  :hook (prog-mode . rainbow-delimiters-mode)
+ )
 
 ;; automatically insert closing delimiters
 (require 'electric)
