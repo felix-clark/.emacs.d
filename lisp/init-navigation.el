@@ -104,8 +104,9 @@
     (require-package 'projectile)
     ;; use projectile mode in standard commands instead of setting separate bindings
     ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
-    (projectile-mode)
+    (projectile-mode t)
     :diminish
+    :bind-keymap ("C-c p" . projectile-command-map)
     :config
     ;; use ivy with projectile
     (setq projectile-completion-system 'ivy)
@@ -117,7 +118,7 @@
     :init
     (require-package 'counsel-projectile)
     :config
-    (counsel-projectile-mode)
+    (counsel-projectile-mode t)
     ;; counsel does something to find-file.
     ;; we don't want to start projectile while not in a project, though.
     ;; :bind ("C-x C-f" . counsel-projectile-find-file)
@@ -140,7 +141,7 @@
 (use-package amx
   :init
   (require-package 'amx)
-  (amx-mode)
+  (amx-mode t)
   ;; :config
   ;; set one or both of these to nil to reduce a bit of delay
   ;; (setq 'amx-ignored-command-matchers nil)
