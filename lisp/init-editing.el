@@ -87,8 +87,10 @@
  )
 
 ;; automatically insert closing delimiters
-(require 'electric)
-(add-hook 'prog-mode-hook (electric-pair-mode 1))
+;; TODO: disable in minibuffer
+(use-package electric
+  :config (electric-pair-mode t)
+ )
 
 (provide 'init-editing)
 ;;; init-editing.el ends here
