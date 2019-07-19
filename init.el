@@ -69,17 +69,8 @@
 (require 'init-csv)
 (require 'init-tex)
 
-;; start server to enable emacsclient
-;; it's not clear this is working, but there's not much point
-;; in it until the configuration is stable.
-;; see https://www.emacswiki.org/emacs/EmacsClient
-;; (add-hook 'after-init-hook
-;;           (lambda ()
-;;             (require 'server)
-;;             (unless (server-running-p)
-;; 	      (server-start))))
-;; Instead of the above, we can just use 'emacsclient -c --alternate-editor=""'
-;; to automatically start the server if it isn't already.
+;; load other miscellaneous packages
+(require 'init-misc)
 
 ;; Make gc pauses after initialization faster by decreasing the threshold.
 (setq gc-cons-threshold (* 2 1000 1000))
