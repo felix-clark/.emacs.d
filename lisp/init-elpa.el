@@ -4,6 +4,9 @@
 
 (require 'package)
 
+;; required in emacs24 for cl-find-if in the macro below
+(require 'cl-lib)
+
 ;; Use Purcell's definition of require-package. A simpler version fails to
 ;; refresh the package contents when the version is out-of-date, which
 ;; necessitates manual calling of package-refresh-contents.

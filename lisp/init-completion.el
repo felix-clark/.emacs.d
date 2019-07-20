@@ -35,8 +35,10 @@
   (company-quickhelp-mode)
   )
 
-(use-package company-prescient
-  :init (require-package 'company-prescient)
+(when (version<= "25.1" emacs-version)
+  (use-package company-prescient
+    :init (require-package 'company-prescient)
+    )
   )
 
 ;; These may not really be part of company-mode

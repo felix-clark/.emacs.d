@@ -2,6 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
+(require 'init-elpa)
+
 (use-package typescript-mode
   :init (require-package 'typescript-mode)
   :defer t
