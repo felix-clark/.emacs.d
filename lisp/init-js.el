@@ -11,7 +11,8 @@
   (interactive)
   (tide-setup)
   ;; (flycheck-mode t) ;; is this already activated
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  ;; this is less aggressive than the default
+  ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (eldoc-mode t)
   (tide-hl-identifier-mode +1)
   (company-mode t)
