@@ -64,6 +64,7 @@
 (require 'init-rust)
 (require 'init-haskell)
 (require 'init-js)
+(require 'init-stats)
 
 ;; load other file type configurations
 (require 'init-csv)
