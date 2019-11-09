@@ -9,6 +9,7 @@
   (require-package 'recentf)
   ;; load after 1 second of idle time
   :defer 1
+  :diminish
   :config
   (recentf-mode)
   (setq recentf-save-file (concat user-emacs-directory ".recentf"))
