@@ -10,6 +10,9 @@
 (use-package ess
   :init (require-package 'ess)
   :after julia-mode
+  ;; Bind M-- to assignment operator a la Rstudio. This is typically bound to
+  ;; negative-argument, but C-M-- is also bound to negative-argument.
+  :bind ("M--" . ess-insert-assign)
   )
 
 (provide 'init-stats)
