@@ -19,8 +19,7 @@
 (scroll-bar-mode -1)
 
 ;; always allow y or n response to yes/no prompt
-;; (fset 'yes-or-no-p 'y-or-n-p)
-(fset 'yes-or-no-p 'y-or-n-p-with-timeout)
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; lets us label modes as silent
 (use-package diminish
