@@ -12,6 +12,7 @@
   :init
   (require-package 'ess)
   :defer t
+  :config
   ;; Define the pipe operator, which does not have a shortcut in ESS.
   (defun then-R-operator ()
     "R: 'then' pipe operator %>%"
