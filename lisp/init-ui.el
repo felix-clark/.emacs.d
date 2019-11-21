@@ -45,6 +45,13 @@
   (require-package 'golden-ratio)
   (golden-ratio-mode)
   :diminish
+  :config
+  ;; Encourage splitting horizontally a bit.
+  ;; These are not golden-ratio variables but the functionality is intertwined.
+  ;; The default for split-width-threshold is 160.
+  (setq split-width-threshold 120)
+  ;; The default for split-height-threshold is 80.
+  (setq split-height-threshold 100)
   )
 
 (use-package which-key
@@ -78,6 +85,8 @@
   (load-theme 'zenburn t) ;; not sure what passing "true" here does
   )
 
+;; reduce the default font size
+(set-face-attribute 'default (selected-frame) :height 110)
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
