@@ -86,7 +86,7 @@
   )
 
 ;; reduce the default font size
-(set-face-attribute 'default (selected-frame) :height 110)
+(set-face-attribute 'default nil :height 110)
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
