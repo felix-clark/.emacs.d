@@ -12,6 +12,10 @@
   (setq wttrin-default-cities '("New York City"))
   )
 
+;; yaml files
+(use-package yaml-mode
+  :init (require-package 'yaml-mode))
+
 ;; dockerfile editing
 (use-package dockerfile-mode
   :init (require-package 'dockerfile-mode)
