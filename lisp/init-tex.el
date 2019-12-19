@@ -4,7 +4,7 @@
 
 (use-package company-auctex
   :ensure t
-  :requres (company yasnippet)
+  :requires (company yasnippet)
   :defer t
   :hook (LaTeX-mode . company-auctex-init)
   ;; this tab behavior is actually annoying
