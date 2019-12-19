@@ -16,20 +16,19 @@ auto-save-list/
 # Automatic package management with MELPA
 elpa/
 
-# eshell history
-eshell/
-
 # added by other packages
-places
-ido.last
+.last-package-update-day
 .recentf
-projectile-bookmarks.eld
-projectile.cache
 .smex-items
+ac-comphist.dat
 amx-items
 anaconda-mode/
-transient/
+eshell/
+ido.last
 irony/
-ac-comphist.dat
+places
+projectile-bookmarks.eld
+projectile.cache
 request/
+transient/
 var/
