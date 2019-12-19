@@ -11,8 +11,7 @@
 
 (use-package cc-mode
   :defer t ;; should autoload only in the right modes
-  :init
-  (require-package 'cc-mode)
+  :ensure t
 )
 
 ;; use irony for c-type
@@ -21,7 +20,7 @@
 ;; on ubuntu install libclang-3.8-dev (for instance)
 (use-package irony
   :after (counsel)
-  :init (require-package 'irony)
+  :ensure t
   ;; activate for common c-like languages
   ;; :hook (c++-mode c-mode objc-mode)
   ;; :hook ((c++-mode c-mode objc-mode) . irony-mode)
@@ -41,18 +40,16 @@
 
 ;; activate irony-eldoc
 (use-package irony-eldoc
+  :ensure t
   :after (irony eldoc)
-  :init
-  (require-package 'irony-eldoc)
   :config
   (add-hook 'irony-mode-hook #'irony-eldoc)
   )
 
 ;; activate flycheck-irony to use clang instead of flycheck's default gcc
 (use-package flycheck-irony
+  :ensure t
   :after (flycheck irony)
-  :init
-  (require-package 'flycheck-irony)
   :config
   (eval-after-load 'flycheck
     '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
@@ -60,9 +57,8 @@
 
 ;; use company-irony
 (use-package company-irony
+  :ensure t
   :after (company irony)
-  :init
-  (require-package 'company-irony)
   :config
   ;; (eval-after-load 'company
   ;;   '(add-to-list 'company-backends 'company-irony))
@@ -74,7 +70,7 @@
 
 ;; may take some more configuration to find the right directory, see github
 (use-package company-c-headers
-  :init (require-package 'company-c-headers)
+  :ensure t
   :after (company)
   :config
   (add-to-list 'company-backends 'company-c-headers)
@@ -83,9 +79,8 @@
 ;; TODO: make auto-indentation use clang-format?
 ;; will cause errors if clang-format is not installed in OS
 (use-package clang-format
+  :ensure t
   :after cc-mode
-  :init
-  (require-package 'clang-format)
   ;; clang-format-region can be triggered using "C-M-\"
   :bind
   ("C-M-\\" . clang-format-region)

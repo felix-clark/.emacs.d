@@ -7,8 +7,6 @@
 (use-package flycheck
   :ensure t
   :diminish flycheck-mode
-  :init
-  (require-package 'flycheck)
   :config
   (global-flycheck-mode)
   (setq flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list)
@@ -17,10 +15,9 @@
   )
 
 (use-package flycheck-color-mode-line
+  :ensure t
   :commands
   flycheck-color-mode-line-mode
-  :init
-  (require-package 'flycheck-color-mode-line)
   :config
   (add-hook 'flycheck-mode-hook #'flycheck-color-mode-line-mode)
   ;; ;; one of these is supposed to work instead:

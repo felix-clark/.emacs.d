@@ -5,7 +5,7 @@
 (require 'init-elpa)
 
 (use-package rust-mode
-  :init (require-package 'rust-mode)
+  :ensure t
   :defer t
   :hook (
 	 ;; easy building with `C-c C-c C-*` where *={b|r|t} for `cargo {build|run|test}`
@@ -26,8 +26,8 @@
   )
 
 (use-package racer
+  :ensure t
   :after (company rust-mode)
-  :init (require-package 'racer)
   ;; we're using global eldoc and company modes so we don't need to add these
   ;; :hook ((racer-mode . eldoc-mode) ; is eldoc not already activated? TODO:check
   ;; 	 (racer-mode . company-mode) ; should be included

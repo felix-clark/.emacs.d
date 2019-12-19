@@ -5,7 +5,7 @@
 (require 'init-elpa)
 
 (use-package typescript-mode
-  :init (require-package 'typescript-mode)
+  :ensure t
   :defer t
   )
 
@@ -23,7 +23,7 @@
   )
 
 (use-package tide
-  :init (require-package 'tide)
+  :ensure t
   :after company
   :defer t
   :hook

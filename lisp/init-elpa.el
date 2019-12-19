@@ -30,11 +30,7 @@ re-downloaded in order to locate PACKAGE."
 	     '("melpa" . "https://melpa.org/packages/") t)
 	     ;; '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-
 (package-initialize)
-
-(require-package 'diminish)
-(require 'diminish)
 
 ;; this line is required to avoid errors in byte-compilation.
 ;; use-package should probably require this itself.
@@ -50,8 +46,15 @@ re-downloaded in order to locate PACKAGE."
   (package-refresh-contents)
   (package-install 'use-package))
 
+;; use-package can use either diminish or delight.
+;; This must be called before using the :diminish keyword.
+(use-package diminish
+  :ensure t
+  )
+
+
 (use-package auto-package-update
-  ;; :ensure t
+  :ensure t
   :config
   ;; increase the update interval from 1 week to 2
   (setq auto-package-update-interval 14)

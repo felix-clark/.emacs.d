@@ -17,7 +17,7 @@
 (setq-default fill-column 80)
 
 (use-package ws-butler
-  :init (require-package 'ws-butler)
+  :ensure t
   :config (ws-butler-global-mode)
   ;; to only turn it on in programming mode, do something like:
   ;; :hook (prog-mode . ws-butler-mode)
@@ -27,7 +27,6 @@
 ;; expand selection to semantic region naturally
 ;; C-= to expand; C-- to undo.
 (use-package expand-region
-  :init (require-package 'expand-region)
   :ensure t
   :bind (("C-=" . er/expand-region)
 	 ("C--" . er/contract-region))
@@ -61,10 +60,10 @@
   )
 ;; ivy interface for flyspell corrections
 (use-package flyspell-correct-ivy
-  :init
-  (require-package 'flyspell-correct-ivy)
-  (setq flyspell-correct-interface #'flyspell-correct-ivy)
+  :ensure t
   :requires (ivy flyspell)
+  :init
+  (setq flyspell-correct-interface #'flyspell-correct-ivy)
   :bind
   ((:map flyspell-mode-map
 	 ("C-;" . flyspell-correct-wrapper)))
@@ -82,7 +81,7 @@
 
 ;; different coloring of successive delimiter levels
 (use-package rainbow-delimiters
-  :init (require-package 'rainbow-delimiters)
+  :ensure t
   :hook (prog-mode . rainbow-delimiters-mode)
  )
 

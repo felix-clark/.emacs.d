@@ -4,13 +4,12 @@
 (require 'init-elpa)
 
 (use-package julia-mode
-  :init (require-package 'julia-mode)
+  :ensure t
   :defer t
   )
 
 (use-package ess
-  :init
-  (require-package 'ess)
+  :ensure t
   :defer t
   :config
   ;; Define the pipe operator, which does not have a shortcut in ESS.

@@ -6,19 +6,20 @@
 
 ;; weather integration
 (use-package wttrin
+  :ensure t
   :commands (wttrin)
-  :init
-  (require-package 'wttrin)
+  :config
   (setq wttrin-default-cities '("New York City"))
   )
 
 ;; yaml files
 (use-package yaml-mode
-  :init (require-package 'yaml-mode))
+  :ensure t
+  )
 
 ;; dockerfile editing
 (use-package dockerfile-mode
-  :init (require-package 'dockerfile-mode)
+  :ensure t
   )
 
 (provide 'init-misc)

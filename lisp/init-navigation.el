@@ -5,8 +5,7 @@
 
 ;; recentf to use <up> to browse recent files
 (use-package recentf
-  :init
-  (require-package 'recentf)
+  :ensure t
   ;; load after 1 second of idle time
   :defer 1
   :diminish
@@ -16,35 +15,14 @@
   (setq recentf-max-menu-items 40)
   )
 
-;; ;; ido: interactive do. try ivy instead.
-;; (require 'ido)
-;; ;; turn on ido mode
-;; (ido-mode t)
-;; ;; use it in more places
-;; (ido-everywhere t)
-;; ;; use flexible matching for extreme laziness
-;; (setq ido-enable-flex-matching t)
-;; ;; uncomment this to ignore hints at point in file
-;; ;; it's probably mostly a problem in .html, where the </tag> syntax looks like a directory.
-;; ;; (setq ido-use-filename-at-point nil)
-;; ;; this apparently makes it easier to create a new file when ido "finds" something
-;; (setq ido-auto-merge-work-directories-length -1)
-;; ;; plays better with recentf
-;; (setq ido-use-virtual-buffers t)
-;; ;; really use ido everywhere: ubiquitous mode
-;; (require-package 'ido-completing-read+)
-;; (ido-ubiquitous-mode 1)
-
 ;; try ivy over ido
 ;; note: ivy uses S-SPC instead of C-SPC to restrict within matches
 ;; fuzzy matching can be activated with ivy--regex-fuzzy, but let's keep that off for now.
 (use-package ivy
   :ensure t
   :diminish
-  :init
-  (require-package 'ivy)
-  (ivy-mode)
   :config
+  (ivy-mode)
   (setq ivy-use-virtual-buffers t) ; possibly needed for recentf
   (setq ivy-height 13) ;; optional; default is 10
   (setq ivy-count-format "(%d/%d) ")
@@ -61,8 +39,8 @@
   :ensure t
   :diminish
   :init
-  (require-package 'counsel)
-  ;; overrides many common key bindings (like find-file)
+  ;; overrides many common key bindings (like find-file). must be in init, not
+  ;; config block.
   (counsel-mode)
   :bind
   (
@@ -89,35 +67,35 @@
 (when (version<= "25.1" emacs-version)
   ;; better sorting of completion results
   (use-package prescient
-    :init (require-package 'prescient)
+    :ensure t
     ;; save usage statistics between sessions
     :config (prescient-persist-mode)
     )
 
   (use-package ivy-prescient
+    :ensure t
     :requires (ivy prescient)
-    :init (require-package 'ivy-prescient)
-    :config (ivy-prescient-mode)
+    :after (counsel)
+    :config (ivy-prescient-mode t)
     )
 
   (use-package projectile
+    :ensure t
     :init
-    (require-package 'projectile)
     ;; use projectile mode in standard commands instead of setting separate bindings
     ;; this can cause some issues, e.g. https://github.com/bbatsov/projectile/issues/994
+    ;; This setting must be in init, not config.
     (projectile-mode t)
     :diminish
     :bind-keymap ("C-c p" . projectile-command-map)
     :config
-    ;; use ivy with projectile
     (setq projectile-completion-system 'ivy)
     :after (ivy)
     )
 
   (use-package counsel-projectile
+    :ensure t
     :requires (counsel projectile)
-    :init
-    (require-package 'counsel-projectile)
     :config
     (counsel-projectile-mode t)
     ;; counsel does something to find-file.
@@ -126,8 +104,7 @@
     )
 
   (use-package ibuffer-projectile
-    :init
-    (require-package 'ibuffer-projectile)
+    :ensure t
     :requires (projectile)
     )
   
@@ -140,14 +117,12 @@
 ;; it's unclear how much it conflicts or works within counsel-M-x
 ;; amx should enable recent history
 (use-package amx
-  :init
-  (require-package 'amx)
-  (amx-mode t)
-  ;; :config
+  :ensure t
+  :after (ivy) ; load after ivy so it is recognized
+  :config (amx-mode t)
   ;; set one or both of these to nil to reduce a bit of delay
   ;; (setq 'amx-ignored-command-matchers nil)
   ;; (setq 'amx-show-key-bindings nil)
-  :after (ivy) ; load after ivy so it is recognized
   )
 
 (provide 'init-navigation)

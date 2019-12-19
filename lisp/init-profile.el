@@ -5,7 +5,7 @@
 
 ;; run (M-x esup) to run the profiler
 (use-package esup
-  :init (require-package 'esup)
+  :ensure t
   )
 
 ;; Use a hook so the message doesn't get clobbered by other messages.

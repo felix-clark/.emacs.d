@@ -28,17 +28,15 @@
   )
 
 (use-package company-quickhelp
+  :ensure t
   :requires company
-  :init
-  (require-package 'company-quickhelp)
   :config
   (company-quickhelp-mode)
   )
 
-(when (version<= "25.1" emacs-version)
-  (use-package company-prescient
-    :init (require-package 'company-prescient)
-    )
+(use-package company-prescient
+  :ensure t
+  :if (version<= "25.1" emacs-version)
   )
 
 ;; These may not really be part of company-mode
@@ -48,7 +46,7 @@
 
 ;; yasnippet for code snippets
 (use-package yasnippet
-  :init (require-package 'yasnippet)
+  :ensure t
   ;; load after company
   :after (company)
   :defer t
@@ -80,7 +78,7 @@
 ;; snippets themselves are in separate packages.
 ;; we can add our own into .emacs.d/snippets/
 (use-package yasnippet-snippets
-  :init (require-package 'yasnippet-snippets)
+  :ensure t
   :requires yasnippet
   )
 

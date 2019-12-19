@@ -4,7 +4,9 @@
 
 (require 'init-elpa)
 
-(require-package 'pip-requirements)
+(use-package pip-requirements
+  :ensure t
+  )
 
 ;; configure python company -- should this be done separately from company-anaconda?
 ;; (add-hook 'python-mode-hook 'company-mode)
@@ -12,41 +14,34 @@
 ;;(define-key company-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 
 
-(when (version<= "25" emacs-version)
-  ;; anaconda-mode requires emacs 25
-  (use-package anaconda-mode
-    :init (require-package 'anaconda-mode)
-    :after (python)
-    ;; diminishing eldoc mode might be nice
-    :hook ((python-mode . anaconda-mode)
-	   (python-mode . anaconda-eldoc-mode))
-    )
+;; anaconda-mode requires emacs 25
+(use-package anaconda-mode
+  :ensure t
+  :after (python)
+  :if (version<= "25" emacs-version)
+  ;; diminishing eldoc mode might be nice
+  :hook ((python-mode . anaconda-mode)
+         (python-mode . anaconda-eldoc-mode))
+  )
 
-  (use-package company-anaconda
-    :init (require-package 'company-anaconda)
-    :after (company anaconda-mode)
-    :config
-    (push 'company-anaconda company-backends)
-    ;;  use with yasnippet
-    ;; we are applying this map to all backends in the company config now
-    ;; (push (company-mode/backend-with-yas 'company-anaconda) company-backends)
-    )
+(use-package company-anaconda
+  :ensure t
+  :after (company anaconda-mode)
+  :if (version<= "25" emacs-version)
+  :config
+  (push 'company-anaconda company-backends)
+  ;;  use with yasnippet
+  ;; we are applying this map to all backends in the company config now
+  ;; (push (company-mode/backend-with-yas 'company-anaconda) company-backends)
+  )
   
-  (use-package ein
-    :init (require-package 'ein)
-    )
-;; these aren't real packages?
-;; (use-package ein-notebook
-;;   :init (require-package 'ein-notebook)
-;;   )
-;; (use-package ein-subpackages
-;;   :init (require-package 'ein-subpackages)
-;; )
+(use-package ein
+  :ensure t
+  :if (version<= "25" emacs-version)
   )
 
 ;; seems like flycheck already activated
 ;; if we use elpy we can try to make it work with flycheck
-;; (require-package 'flycheck)
 ;; (when (require 'flycheck nil t)
 ;;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
 ;;   (add-hook 'elpy-mode-hook 'flycheck-mode))

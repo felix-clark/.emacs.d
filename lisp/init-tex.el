@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package company-auctex
-  :init (require-package 'company-auctex)
+  :ensure t
   :defer t
   :hook (LaTeX-mode . company-auctex-init)
   ;; this tab behavior is actually annoying

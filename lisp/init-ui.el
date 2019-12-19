@@ -21,14 +21,9 @@
 ;; always allow y or n response to yes/no prompt
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; lets us label modes as silent
-(use-package diminish
-  :init (require-package 'diminish))
-
 ;; smooth scrolling
 (use-package smooth-scrolling
-  :init
-  (require-package 'smooth-scrolling)
+  :ensure t
   :config
   (smooth-scrolling-mode)
   (setq smooth-scroll-margin 8) ; default is 10
@@ -41,11 +36,10 @@
 
 ;; make the window with the cursor larger
 (use-package golden-ratio
-  :init
-  (require-package 'golden-ratio)
-  (golden-ratio-mode)
+  :ensure t
   :diminish
   :config
+  (golden-ratio-mode)
   ;; Encourage splitting horizontally a bit.
   ;; These are not golden-ratio variables but the functionality is intertwined.
   ;; The default for split-width-threshold is 160.
@@ -55,33 +49,22 @@
   )
 
 (use-package which-key
-  :init
-  (require-package 'which-key)
-  (which-key-mode)
+  :ensure t
   :diminish
+  :config
+  (which-key-mode)
   )
 
 ;; eldoc for function signature description
 (use-package eldoc
   :init (require 'eldoc)
-  :diminish)
-
-;; Setting themes
-;; when multiple themes are loaded then one can simply
-;; be enabled: (enable-theme 'my-theme)
-;; I'll probably stick to one theme, though, so there's
-;; not much point in actually loading multiple.
-
-;; solarized comes with nice-looking light and dark themes
-;; (require-package 'solarized-theme)
-;; see github for solarized options, they go before load-theme
-;; (load-theme 'solarized-dark-theme)
-;; (load-theme 'solarized-light-theme)
+  :diminish
+  )
 
 ;; zenburn is a popular vi theme
 (use-package zenburn-theme
-  :init
-  (require-package 'zenburn-theme)
+  :ensure t
+  :config
   (load-theme 'zenburn t) ;; not sure what passing "true" here does
   )
 

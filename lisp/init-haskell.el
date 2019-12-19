@@ -6,7 +6,7 @@
 
 
 (use-package haskell-mode
-  :init (require-package 'haskell-mode)
+  :ensure t
   :bind (:map haskell-mode-map
 	      ("C-c h" . hoogle)
 	      ("C-o" . open-line))
@@ -32,7 +32,7 @@
 ;;   :after haskell-mode)
 
 (use-package hindent
-  :init (require-package 'hindent)
+  :ensure t
   :after haskell-mode
   :config
   (setq hindent-reformat-buffer-on-save t)
@@ -41,7 +41,7 @@
 
 ;; ;; intero for full IDE features, though it is failing to autoload
 ;; (use-package intero
-;;   :init (require-package 'intero)
+;;   :ensure t
 ;;   :after (haskell-mode)
 ;; 	  ;; haskell-cabal) ;; don't use this right now
 ;;   :hook
@@ -55,7 +55,7 @@
 ;;   )
 
 (use-package page-break-lines
-  :init (require-package 'page-break-lines)
+  :ensure t
   :after haskell-mode
   :config
   (push 'haskell-mode page-break-lines-modes)
