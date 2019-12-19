@@ -33,6 +33,9 @@ re-downloaded in order to locate PACKAGE."
 
 (package-initialize)
 
+(require-package 'diminish)
+(require 'diminish)
+
 ;; this line is required to avoid errors in byte-compilation.
 ;; use-package should probably require this itself.
 (require-package 'bind-key)
@@ -46,6 +49,16 @@ re-downloaded in order to locate PACKAGE."
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
+
+(use-package auto-package-update
+  ;; :ensure t
+  :config
+  ;; increase the update interval from 1 week to 2
+  (setq auto-package-update-interval 14)
+  (setq auto-package-update-prompt-before-update t)
+  (setq auto-package-update-delete-old-versions t)
+  (auto-package-update-maybe)
+  )
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here
